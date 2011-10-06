@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="imagetoolbar" content="no">
+  <link rel="icon" href="/srv/img/favicon.gif" type="image/gif">
+
+<!--additional header info goes here-->
+  <meta name="keywords" content="svg, slider">
+  <meta name="description" content="slider for svg applications">
+  <style type="text/css">
+body {background-image:url('http://www.carto.net/srv/img/backmap.gif'); background-repeat:no-repeat; background-color:#ffef95; font-family:Arial,Helvetica,Geneva,sans-serif;color:#B42D25; }
+
+/*B42D25 ~ rgb(180,44,37) bordeauxrot*/
+/*161682 ~ rgb(23,23,130) dklblau */
+/*168C16 ~ rgb(23,140,23) dklgruen */
+/*ffef95 ~ rgb(255,239,149) bg-gelb */
+
+a {text-decoration:underline; color:#168C16; background: transparent}
+
+h2 a {text-decoration:none;}
+
+.inpage { color:#168C16;}
+.expage { color:#161682;}
+
+a:visited {text-decoration:none;}
+
+
+/*
+a.inpage:visited {color:#6C6F12; background: transparent}
+a.expage:visited {color:#6C125D; background: transparent}
+*/
+
+@media screen {  /* hide from IE3 */
+a[href]:hover { background: #ffa }
+}
+
+
+
+
+.lde {background-image:url('http://www.carto.net/srv/img/back_l_de.gif'); }
+.lfr {background-image:url('http://www.carto.net/srv/img/back_l_fr.gif'); }
+.len {background-image:url('http://www.carto.net/srv/img/back_l_en.gif'); }
+.les {background-image:url('http://www.carto.net/srv/img/back_l_es.gif'); }
+
+.higher { font-weight:bold; } /*TO BE REMOVED*/
+.bigger { font-weight:bold; }
+.smaller { font-size:small;}
+
+.chrihelptd { background-color:#FFEF95; } /*tabellen hintergrund in christans hilfen sollet allgem hintergrund entsprechen*/
+
+.newspostit { background-color:#f6ffd8;}
+
+
+p,h1,h2,h3,h4,ul,ol,li,div,td,th,address,blockquote,b,i,.keepnormfontcolor { font-family:Arial,Helvetica,Geneva,sans-serif; color:#B42D25 }
+tt,pre { font-family:"Courier New",Courier,monospace; color:#B42D25; }
+
+
+.info { border:1px solid; background-color:#eeeeee; padding:40px; margin:0px; }
+.info tt, .info pre { font-family:"Courier New",Courier,monospace; color:blue; }
+
+  </style>
+  <title>carto:net - 
+
+ SVG slider
+</title>
+</head>
+<body><a name="top"></a>
+
+<table width="100%">
+	<tr>
+		<td align="left">
+			<img src="http://www.carto.net/srv/img/navig.gif" alt="" usemap="#navig" border="0" width="600" height="111">
+		</td>
+	</tr>
+</table>
+<!-- ONLY navig.gif IMG NEEDED NORMALLY -->
+<map name="navig">
+  <area shape="rect" coords="226,14,585,66" href="http://www.carto.net/" target="_top" alt="main page - page initiale - hauptseite - página principal">
+  <area shape="rect" coords="272,77,433,106" href="http://www.carto.net/projects/" alt="projects - projets - projekte - proyectos">
+  <area shape="rect" coords="454,77,598,106" href="http://www.carto.net/authors/" alt="authors - auteurs - autoren - autores">
+  <area shape="rect" coords="130,77,253,106" href="http://www.carto.net/papers/" alt="papers - exposés - berichte - papeles">
+  <area shape="rect" coords="25,77,109,106" href="http://www.carto.net/help/" alt="help - aide - hilfe - ayuda">
+</map>
+
+
+<div id="adBarContainer" style="margin-left:13px;float:right;right:8px;width:160px;height:600px;border:0px solid red;">
+<script type="text/javascript"><!--
+google_ad_client = "pub-6049981187637171";
+	/* 160x600, Carto.net Standard */
+	google_ad_slot = "4746507232";
+	google_ad_width = 160;
+	google_ad_height = 600;
+//-->
+</script>
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+</div>
+
+
+
+
+
+
+  <h2 class="sitemap"><a href="/">carto</a><span class="expage">:</span><a href="/papers/">papers</a><span class="expage">:</span><a href="/papers/svg/">svg</a><span class="expage">:</span><a href="/papers/svg/samples/">examples</a><span class="expage">:</span><a href="/papers/svg/samples/#iact">interactivity and svg gui</a><span class="expage">:</span>slider</h2>
+
+<h2>SVG slider, Version 1.01, 2010-03-17, (see history at the end of the page)</h2>
+
+<p>This SVG slider object should assist authors of SVG web applications in creating user interfaces.</p>
+
+<p>Why should you create SVG only web applications? Advantages of SVG only applications are flexiblity (you can control every single aspect of a SVG GUI element) and scalability (in SVG your userinterface elements are scalable as well). If you need a pixel-precise, scalable application, HTML is not very well suited, since HTML form elements don't scale well. SVG also potentially allows more sophisticated GUI elements than HTML provides, such as slider, dial knobs, complex colourpickers, etc. Disadvantages include complexity (more complex than using HTML form elements) and a potentially bad user experience, if your SVG GUI elements behave different than native GUI elements of the operating system the user is used to. Some browsers still don't support SVG to HTML or HTML to SVG communication. In that case you are sort of locked into doing everything with SVG in order to reach the broadest audience. Another advantage of creating SVG only applications is, that your applications also work in SVG viewers outside the webbrowser (e.g. Batik, eSVG or SVG embedded applications).</p>
+
+<p>See an <a href="index.svg">example</a> of the SVG slider object. The scripts had been tested in Adobe SVG viewer version 3, version 6, Opera 9, Firefox/Mozilla SVG and Batik. The slider is free to use. If you do any substantial improvements, please send back your improvements to the author. The GUI elements of carto.net are licensed under the terms of the LGPL license and you need to distribute the license with your code. Additionally, you should create a link to carto.net in your project's "about page" or impressum. If you plan to use the GUI elements in a commercial product, please check back with the author of the GUI elements to investigate arrangements. The original URL for the slider is http://www.carto.net/papers/svg/gui/slider/.</p>
+      <div class="info">
+        <h3>Documentation</h3>
+        <h4>Requirements</h4>
+<p>To use the slider, your project needs to meet the following requirements:</p>
+<ul>
+	<li>the svg root element needs to have a viewBox attribute set (e.g. <tt>viewBox="0 0 1100 700"</tt>)</li>
+	<li>you need to link to the following scripts in your SVG header to use the slider: <a href="../../resources/mapApp.js">mapApp.js</a>, <a href="../../resources/helper_functions.js">helper_functions.js</a> and <a href="slider.js">slider.js</a>; please note, that not all of the functions in these files are needed. The depencies are listed below.</li>
+	<li>you need to include the global variable "myMapApp" of type "mapApp" into one of your js files, (e.g. <tt>var myMapApp = new mapApp();</tt>)</li>
+	<li>you need to create an svg group element with a unique id in an appropriate position of your document tree to hold the graphics of the slider (e.g. <tt>&lt;g id="slider1" /&gt;</tt>)</li>
+	<li>it is recommended to place a background rectangle behind your SVG application to receive events on the root element level, e.g. loosing focus and calling the callback function when clicking outside of the slider</li>
+	<li>you need to initialize the slider as described below</li>
+</ul>
+       <h4>Features</h4>
+       <ul>
+       	<li>sliders can be horizontal, vertical or diagonal</li>
+       	<li>slider lines and symbols can be individually styled, using arrays with presentation attributes</li>
+       	<li>sliders can have any start and end values, in between values are linearly interpolated</li>
+       	<li>sliders call callback functions either immediately when moving the slider, or after the slider was released</li>
+       	<li>sliders can be repositioned</li>
+		<li>the slider value can be set to different values by script</li>
+		<li>scripts may query the current slider value at any time</li>
+       </ul>
+       <h4>Dependencies on external functions</h4>
+        <ol><li><a href="slider.js">slider.js</a>:
+        	<ul><li>all of the objects and functions in this file are necessary</li></ul>
+        </li>
+        <li><a href="../../resources/mapApp.js">mapApp.js</a>:
+        	<ul><li>all of the objects and functions in this file are necessary</li></ul>
+        </li>
+        	<li><a href="../../resources/helper_functions.js">helper_functions.js</a>:
+        	<ul>
+        		<li>all the global variables at the top of the file</li>
+        		<li>function getTransformToRootElement()</li>
+        		<li>function leftOfTest()</li>
+	       		<li>function intersect2lines()</li>
+	       		<li>function toPolarDist()</li>
+	       		<li>function toPolarDir()</li>
+        	</ul>
+        </li>
+        </ol>
+        <h4>Constructor</h4>
+        <p>The following constructor function creates the slider:</p>
+        <p><tt>var slider = new slider(id,parentNode,x1,y1,value1,x2,y2,value2,startVal,sliderStyles,invisSliderWidth,sliderSymb,functionToCall,mouseMoveBool);</tt><br/>
+	Example:<br/>
+	<tt>//first the slider styles<br/>
+var sliderStyles={"stroke":"dimgray","stroke-width":3};<br/>
+var invisSliderWidth = 15;<br/>
+slider1 = new slider("slider1","slider1",710,65,0,710,165,100,50,sliderStyles,invisSliderWidth,"sliderSymbol",showVal,true);</tt></p>
+		<p>The arguments are the following:</p>
+		<ol>
+			<li><tt>id (String)</tt>:<br />unique id for the slider</li>
+			<li><tt>parentNode (String or node reference)</tt>:<br />group id or node reference to the parent group that will contain the slider geometry</li>
+			<li><tt>x1 (number, in viewBox coordinate system)</tt>:<br />start point x-coordinate of the slider</li>
+			<li><tt>y1 (number, in viewBox coordinate system)</tt>:<br />start point y-coordinate of the slider</li>
+			<li><tt>value1 (number, float)</tt>:<br />the start value of the slider</li>
+			<li><tt>x2 (number, in viewBox coordinate system)</tt>:<br />end point x-coordinate of the slider</li>
+			<li><tt>y2 (number, in viewBox coordinate system)</tt>:<br />end point y-coordinate of the slider</li>
+			<li><tt>value2 (number, float)</tt>:<br />the end value of the slider</li>
+			<li><tt>startVal (number, float)</tt>:<br />the initial value of the slider, after the slider was initialized</li>
+			<li><tt>sliderStyles (array of literals with presentation attributes)</tt>:<br />an array literal containing the presentation attributes of the slider line; could include CSS classes; should at least include a "stroke" and "stroke-width" attribute; example: <tt>var sliderStyles={"stroke":"dimgray","stroke-width":3};</tt></li>
+			<li><tt>invisSliderWidth (number, in viewBox coordinate system)</tt>:<br />the stroke-width of an invisible slider line, the stroke-width should be as large or larger than the stroke-width of the visible slider line. It is typically as wide as the slider symbol is wide. The reason behind this invisible slider line is to receive events, even if the visible slider line is very thin.</li>
+			<li><tt>sliderSymb (String, unique id)</tt>:<br />id of the <tt>&lt;symbol /&gt;</tt> element containing the slider symbol geometry. This slider symbol is dragged along the slider line.</li>
+			<li><tt>functionToCall (function or object or undefined)</tt>:<br />callBackFunction: you can pass a function, object or undefined. In the case of function and object the parameters returned are: the changetype (string ("release"|"change")), the id of the slider (string) and the slider value (number, float): In case of an object, it calls the method .getSliderVal(). In case of an undefined value, no callBack function is executed.</li>
+			<li><tt>mouseMoveBool (boolean, true|false)</tt>:<br />indicates whether the slider should provide immediate feedback while dragging, or not.</li>
+		</ol>
+        <h4>Methods</h4>
+        <ul>
+        	<li><tt>.getValue()</tt>:<br />returns the current value of the slider (number)</li>
+        	<li><tt>.setValue(value,fireFunction)</tt>:<br />sets the current value of the slider (number). The second parameter indicates whether the callBack function should be fired or not</li>
+        	<li><tt>.moveTo(x1,y1,x2,y2)</tt>:<br />repositions the slider. The fist coordinate indicates the start of the slider, the second indicates the end of the slider</li>
+        	<li><tt>.removeSlider()</tt>:<br />removes all slider geometry from its parent group. The slider isn't usable any more, after calling this method.</li>
+        </ul>
+        <h4>Version history</h4>
+        <ul>
+        	<li>0.99 (not documented, around 2001): initial version</li>
+        	<li>1.0 (2006-08-04): changed constructor parameters (added id, parentNode), removed parameter sliderGroupId, added documentation, added method .moveTo()</li>
+        	<li>1.01 (2010-03-17): fixed a problem with Firefox 3.6, it wouldn't process events on horizontal or vertical lines if the opacity is set to zero. Now it is set to 0.001. evt.preventDefault() added to prevent unwanted dragging of SVG graphic.</li>
+        </ul>
+		<h4>Credits</h4>
+		<ul>
+			<li>Kevin Lindsey (tutorials on his website)</li>
+		</ul>
+    </div>
+<br><br><hr>
+<table width="100%">
+<tr>
+<td align="left">Last modified: 
+
+Wednesday, 17-Mar-2010 22:40:06 CET
+<br>&copy; <a href="http://www.carto.net/#en_w3">carto<span class="expage">:</span>net</a> (<a href="/andre.mw/">andr&eacute; m. winter</a> &amp <a href="http://www.carto.net/neumann/">andreas neumann</a>)
+
+<br>original URL for reference: http://www.carto.net/papers/svg/gui/slider/index.shtml</td>
+<td align="right" valign="top"><a class="expage" href="javascript:location.href='http://del.icio.us/post?v=3&amp;url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title)"><img src="http://images.del.icio.us/static/img/delicious.med.gif" width="16" height="16" align="bottom" alt="del.icio.us"/>&nbsp;Add this page to del.icio.us</a></td>
+</tr></table>
+</body></html>
+

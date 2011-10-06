@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="imagetoolbar" content="no">
+  <link rel="icon" href="/srv/img/favicon.gif" type="image/gif">
+
+<!--additional header info goes here-->
+  <meta name="keywords" content="svg, tab, tabgroup object">
+  <meta name="description" content="tabgroup object for svg applications">
+  <style type="text/css">
+body {background-image:url('http://www.carto.net/srv/img/backmap.gif'); background-repeat:no-repeat; background-color:#ffef95; font-family:Arial,Helvetica,Geneva,sans-serif;color:#B42D25; }
+
+/*B42D25 ~ rgb(180,44,37) bordeauxrot*/
+/*161682 ~ rgb(23,23,130) dklblau */
+/*168C16 ~ rgb(23,140,23) dklgruen */
+/*ffef95 ~ rgb(255,239,149) bg-gelb */
+
+a {text-decoration:underline; color:#168C16; background: transparent}
+
+h2 a {text-decoration:none;}
+
+.inpage { color:#168C16;}
+.expage { color:#161682;}
+
+a:visited {text-decoration:none;}
+
+
+/*
+a.inpage:visited {color:#6C6F12; background: transparent}
+a.expage:visited {color:#6C125D; background: transparent}
+*/
+
+@media screen {  /* hide from IE3 */
+a[href]:hover { background: #ffa }
+}
+
+
+
+
+.lde {background-image:url('http://www.carto.net/srv/img/back_l_de.gif'); }
+.lfr {background-image:url('http://www.carto.net/srv/img/back_l_fr.gif'); }
+.len {background-image:url('http://www.carto.net/srv/img/back_l_en.gif'); }
+.les {background-image:url('http://www.carto.net/srv/img/back_l_es.gif'); }
+
+.higher { font-weight:bold; } /*TO BE REMOVED*/
+.bigger { font-weight:bold; }
+.smaller { font-size:small;}
+
+.chrihelptd { background-color:#FFEF95; } /*tabellen hintergrund in christans hilfen sollet allgem hintergrund entsprechen*/
+
+.newspostit { background-color:#f6ffd8;}
+
+
+p,h1,h2,h3,h4,ul,ol,li,div,td,th,address,blockquote,b,i,.keepnormfontcolor { font-family:Arial,Helvetica,Geneva,sans-serif; color:#B42D25 }
+tt,pre { font-family:"Courier New",Courier,monospace; color:#B42D25; }
+
+
+.info { border:1px solid; background-color:#eeeeee; padding:40px; margin:0px; }
+.info tt, .info pre { font-family:"Courier New",Courier,monospace; color:blue; }
+
+  </style>
+  <title>carto:net - 
+
+ SVG tabgroup Object
+</title>
+</head>
+<body><a name="top"></a>
+
+<table width="100%">
+	<tr>
+		<td align="left">
+			<img src="http://www.carto.net/srv/img/navig.gif" alt="" usemap="#navig" border="0" width="600" height="111">
+		</td>
+	</tr>
+</table>
+<!-- ONLY navig.gif IMG NEEDED NORMALLY -->
+<map name="navig">
+  <area shape="rect" coords="226,14,585,66" href="http://www.carto.net/" target="_top" alt="main page - page initiale - hauptseite - página principal">
+  <area shape="rect" coords="272,77,433,106" href="http://www.carto.net/projects/" alt="projects - projets - projekte - proyectos">
+  <area shape="rect" coords="454,77,598,106" href="http://www.carto.net/authors/" alt="authors - auteurs - autoren - autores">
+  <area shape="rect" coords="130,77,253,106" href="http://www.carto.net/papers/" alt="papers - exposés - berichte - papeles">
+  <area shape="rect" coords="25,77,109,106" href="http://www.carto.net/help/" alt="help - aide - hilfe - ayuda">
+</map>
+
+
+<div id="adBarContainer" style="margin-left:13px;float:right;right:8px;width:160px;height:600px;border:0px solid red;">
+<script type="text/javascript"><!--
+google_ad_client = "pub-6049981187637171";
+	/* 160x600, Carto.net Standard */
+	google_ad_slot = "4746507232";
+	google_ad_width = 160;
+	google_ad_height = 600;
+//-->
+</script>
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+</div>
+
+
+
+
+
+
+  <h2 class="sitemap"><a href="/">carto</a><span class="expage">:</span><a href="/papers/">papers</a><span class="expage">:</span><a href="/papers/svg/">svg</a><span class="expage">:</span><a href="/papers/svg/samples/">examples</a><span class="expage">:</span><a href="/papers/svg/samples/#iact">interactivity and svg gui</a><span class="expage">:</span>tabgroup object</h2>
+
+<h2>SVG tabgroup Object, Version 1.2.1 (2006-07-07), see history at end of page</h2>
+
+<p>This SVG tabgroup object should assist authors of SVG webapplications in creating user interfaces.</p>
+
+<p>Why should you create SVG only web applications? Advantages of SVG only applications are flexiblity (you can control every single aspect of a SVG GUI element) and scalability (in SVG your userinterface elements are scalable as well). If you need a pixel-precise, scalable application, HTML is not very well suited, since HTML form elements don't scale well. SVG also potentially allows more sophisticated GUI elements than HTML provides, such as slider, dial knobs, complex colourpickers, etc. Disadvantages include complexity (more complex than using HTML form elements) and a potentially bad user experience, if your SVG GUI elements behave different than native GUI elements of the operating system the user is used to. Some browsers still don't support SVG to HTML or HTML to SVG communication. In that case you are sort of locked into doing everything with SVG in order to reach the broadest audience. Another advantage of creating SVG only applications is, that your applications also work in SVG viewers outside the webbrowser (e.g. Batik, eSVG or SVG embedded applications).</p>
+
+<p>See an <a href="index.svg">example</a> of the SVG tabgroup object. The scripts had been tested in Adobe SVG viewer version 3, version 6, MozillaSVG, Opera9 and Batik.</p>
+<p>The SVG tabgroup object is free to use. If you do any substantial improvements, please send back your improvements to the author. The GUI elements of carto.net are licensed under the terms of the LGPL license and you need to distribute the license with your code. Additionally, you should create a link to carto.net in your project's "about page" or impressum. If you plan to use the GUI elements in a commercial product, please check back with the author of the GUI elements to investigate arrangements. The original URL for the tabgroup object is http://www.carto.net/papers/svg/gui/tabgroup/.</p>
+      <div class="info">
+        <h3>Documentation</h3>
+        <h4>Requirements</h4>
+<p>To use the tabgroup object, your project needs to meet the following requirements:</p>
+<ul>
+	<li>it is recommended that the svg root element has a viewBox attribute set (e.g. <tt>viewBox="0 0 1024 768"</tt>)</li>
+	<li>you need to link to the following scripts in your SVG header to use the selectionList: <a href="../../resources/helper_functions.js">helper_functions.js</a>, <a href="../../resources/timer.js">timer.js</a> and <a href="tabgroup.js">tabgroup.js</a>; please note, that not all of the functions in these files are needed. The depencies to functions in the file "helper_functions.js" are listed below.</li>
+	<li>you need to create an empty svg group element with a unique id in an appropriate position of your document tree to hold the graphics of the tabgroup object (e.g. <tt>&lt;g "tabgroupEvents" /&gt;</tt>)</li>
+	<li>you need to initialize the tabgroup object with e.g. <tt>var tabgroupForEvents = new tabgroup(id,parentNode,x,y,width,height,tabheight,cornerLeft,cornerRight,tabmargins,spaceBetweenTabs,tabStyles,activetabBGColor,tabwindowStyles,tabtextStyles,tabTitles,activeTabindex,hideContent,functionToCall);</tt> as described below</li>
+</ul>
+       <h4>Features</h4>
+       <ul>
+       	<li>the tabgroups can be individually styled using self-chosen presentation attributes</li>
+       	<li>tabs may have rectangular, round or triangular corners; left and right corner can have individual corner types</li>
+       	<li>tabwindow content can be hidden to allow oversize content</li>
+       	<li>callback function or objects can be called if a different tab is activated</li>
+       	<li>a method exists for activating a tab (put into foreground and made active)</li>
+       	<li>tabs can be enabled/disabled (greyed out)</li>
+       	<li>methods exist for inserting, appending and removing contents to tabwindows</li>
+       	<li>multiline tabs are allowed (separated with "\n")</li>
+       </ul>
+       <h4>Dependencies on external functions</h4>
+        <ol><li><a href="tabgroup.js">tabgroup.js</a>:
+        	<ul><li>all of the objects and functions in this file are necessary</li></ul>
+        </li>
+        </li>
+        	<li><a href="../../resources/timer.js">timer.js</a>:
+        		<ul><li>all of the objects and functions in this file are necessary</li></ul>
+        	</li>
+        	<li><a href="../../resources/helper_functions.js">helper_functions.js</a>:
+        	<ul>
+        		<li>all the global variables at the top of the file</li>
+         	</ul>
+        </li>
+        </ol>
+        <h4>Dom Structure of a tabgroup</h4>
+        <p>Following is the DOM structure as it is generated by this tabgroup object for a typical tabgroup:</p>
+        <img width="700" height="500" src="dom_tabgroups.png" alt="DOM of a typical tabgroup" />
+        <p>In the above example we see the DOM structure of the first tab in the tabgroup "tabgroupTriangle". The group with the id "tabgroupTriangle" is the <tt>parentNode</tt>. Within this group we have an additional group that holds transform (translate) parameters. If you set "x" and "y" you are actually changing the transform parameters. This means that the content of the tab can stay in a local coordinate system. Next in the hierarchy there are 4 groups, one for each of the 4 tabs. Within this group we first have a path element for the tabbackground window. Next, there is a path for the tab, followed by a text element for the tabtitle. The tabtitle text element has tspan child nodes for each line in the tab title. The final group (the one marked in the screenshot) is the group for the tab content that one can reference through <tt>.tabwindows[tabindex]["content"]</tt>. The group with the id "oversizeContent" is already content of the tab.</p>
+        <h4>Constructor</h4>
+        <p>The following constructor function creates the tabgroup:</p>
+        <p><tt>var tabgroupForEvents = new tabgroup(id,parentNode,x,y,width,height,tabheight,cornerLeft,cornerRight,tabmargins,spaceBetweenTabs,tabStyles,activetabBGColor,tabwindowStyles,tabtextStyles,tabTitles,activeTabindex,hideContent,functionToCall);</tt></p>
+	<p>Example:<br/>
+	<tt>//first a few style array literals<br />
+var tabStyles = {"fill":"lightgray","stroke":"dimgray","stroke-width":1,"cursor":"pointer"};<br />
+var tabwindowStyles = {"fill":"aliceblue","stroke":"dimgray","stroke-width":1};<br />
+var tabtextStyles = {"font-family":"Arial,Helvetica","font-size":15,"fill":"dimgray","font-weight":"normal"};<br />
+tabgroupRectRound = new tabgroup("tabgroupRectRound","tabgroupRectRound",200,550,340,200,20,"rect","round",10,5,tabStyles,"rgb(191,233,255)",tabwindowStyles,tabtextStyles,tabTitles,0,false,tabChanged);</tt></p>
+		<p>The arguments are the following:</p>
+		<ol>
+			<li><tt>id (String)</tt>:<br />unique id that identifies the tabgroup</li>
+			<li><tt>parentNode (node reference or String)</tt>:<br />a node reference to a group where the tabgroup geometry can be appended. Alternatively one can provide a String with the unique identifier for this group.</li>
+			<li><tt>x (number)</tt>:<br />the upper left x coordinate of the corner of the tabgroup (incl. the top tabs)</li>
+			<li><tt>y (number)</tt>:<br />the upper left y coordinate of the corner of the tabgroup (incl. the top tabs)</li>
+			<li><tt>width (number)</tt>:<br />the overall width of the tabgroup (incl. the top tabs)</li>
+			<li><tt>height (number)</tt>:<br />the overall height of the tabgroup (incl. the top tabs)</li>
+			<li><tt>tabheight (number)</tt>:<br />the height of the tabs in viewBox units</li>
+			<li><tt>cornerLeft (String ("rect"|"round"|"triangle"))</tt>:<br />the left corner type of the tab</li>
+			<li><tt>cornerRight (String ("rect"|"round"|"triangle"))</tt>:<br />the left corner type of the tab</li>
+			<li><tt>tabmargins (number)</tt>:<br />the space between the left side of the tab and the tab title in viewBox units; also controls the rounding radius or size of the triangle corners</li>
+			<li><tt>spaceBetweenTabs (number)</tt>:<br />the space between two neighbour tabs in viewBox units</li>
+			<li><tt>tabStyles (Array literal with presentation attributes)</tt>:<br />an array literal containing the presentation attributes of the tab; could include CSS classes; should have at least a "fill" attribute; example: <tt>var tabStyles = {"fill":"lightgray","stroke":"dimgray","stroke-width":1,"cursor":"pointer"};</tt></li>
+			<li><tt>activetabBGColor (String)</tt>:<br />a String defining the fill attribute of an activated tab</li>
+			<li><tt>tabwindowStyles (Array literal with presentation attributes)</tt>:<br />an array literal containing the presentation attributes of the tab window; could include CSS classes; example: <tt>var tabwindowStyles = {"fill":"aliceblue","stroke":"dimgray","stroke-width":1};</tt></li>
+			<li><tt>tabtextStyles (Array literal with presentation attributes)</tt>:<br />an array literal containing the presentation attributes of the tab title texts; could include CSS classes; should have at least a "font-size" attribute; example: <tt>var tabtextStyles = {"font-family":"Arial,Helvetica","font-size":15,"fill":"dimgray","font-weight":"normal"};</tt></li>
+			<li><tt>tabTitles (Array of Strings)</tt>:<br />an array of strings holding the tab titles. This array also defines the number of tabs within a tabgroup</li>
+			<li><tt>activeTabindex (integer, zero based)</tt>:<br />an index nr setting the given tab to active after tabgroup creation</li>
+			<li><tt>hideContent (boolean, true|false)</tt>:<br />a boolean value indicating that the tabgroup content group of inactive tab is set to hidden. A value of <tt>true</tt> triggers that the <tt>display</tt> attribute is set to <tt>none</tt> for inactive tabgroup contents</li>
+			<li><tt>functionToCall (function or object or undefined)</tt>:<br />callBackFunction: you can pass a function, object or undefined. In the case of function and object the parameters returned are: the id of the tabgroup (string), the title of the active tab (String), the index nr of the active tab (number, integer). In case of an object, it calls the method <tt>.tabActivated(id,tabTitle,tabindex)</tt>. In case of an undefined value, no callBack function is executed. The callBack function is executed with a slight delay (200ms) to allow the tabgroup to update the tabs before executing the callback function.</li>
+</ol>
+        <h4>Methods</h4>
+        <ul>
+        	<li><tt>.activateTabByIndex(tabindex,fireFunction)</tt>:<br />activates the tab with the given tab index. The parameters are: <tt>tabindex</tt> (number, integer, zero based) and <tt>fireFunction</tt> (boolean, true|false) - indicates whether the associated callback function should be executed</li>
+        	<li><tt>.activateTabByTitle(tabtitle,fireFunction)</tt>:<br />activates the tab with the given tab title. The parameters are: <tt>tabtitle</tt> (String) and <tt>fireFunction</tt> (boolean, true|false) - indicates whether the associated callback function should be executed</li>
+         	<li><tt>.moveTo(x,y)</tt>:<br />moves the whole tabgroup to the given position (using transform statements). The parameters are: <tt>x</tt> (number) and <tt>y</tt> (number) - both numbers are in viewBox coordinates</li>
+         	<li><tt>.resize(width,height)</tt>:<br />resizes the whole tabgroup to the given width and height (rewriting the tabwindows). The parameters are: <tt>width</tt> (number) and <tt>height</tt> (number) - both numbers are in viewBox coordinates</li>
+        	<li><tt>.addContent(node,tabindex,inheritDisplay)</tt>:<br/>add content and append it to the end of the tabgroup content group. The parameters are: <tt>node</tt> (node reference or String) (in case of a string it should be a unique id), <tt>tabindex</tt> (number, integer, zero based) and <tt>inheritDisplay</tt> (boolean, true|false). The last parameter controls whether we should set the display variable to <tt>inherit</tt> upon appending the content. This is often useful, since the display attribute of the groups that are appended to tabwindows are initially set to <tt>none</tt></li>
+         	<li><tt>.removeContent(node,tabindex)</tt>:<br/>remove content from the content group of a tabwindow. Parameters are: <tt>node</tt> (node reference or String) and a <tt>tabindex</tt> (number, integer, zero-based). In case of a String, the node should point to a unique id of the node to be removed.</tt>
+         	<li><tt>.disableSingleTab(tabindex)</tt>:<br/>disable (grey out) the given tab. The parameter is: <tt>tabindex</tt> (number, integer, zero based). As a result the disabled tab can't be activated</li>
+         	<li><tt>.enableSingleTab(tabindex)</tt>:<br/>enable the given tab. Only has an effect, if the tab was previously disabled (greyed out). The parameter is: <tt>tabindex</tt> (number, integer, zero based). As a result the disabled tab can't be activated</li>
+         	<li><tt>.disableAllTabs()</tt>. All tabs are disabled (greyed out)</li>
+         	<li><tt>.enableAllTabs()</tt>. All tabs are enabled.</li>
+      	</ul>
+        <h4>Useful Properties</h4>
+        <ul>
+		<li><tt>.activeIndex</tt>:<br />is the tabindex of the activated tab within a tabgroup. Data type is a number (integer), zero based.</li>
+		<li><tt>.id</tt>:<br />unique identifier of the tabgroup. Data type is a number (integer), zero based.</li>
+		<li><tt>.width</tt>:<br />the width of the tabgroup. Data type is a number (float), in viewBox coordinates.</li>
+		<li><tt>.height</tt>:<br />the height of the tabgroup. Data type is a number (float), in viewBox coordinates.</li>
+		<li><tt>.tabheight</tt>:<br />the height of the tab. Data type is a number (float), in viewBox coordinates.</li>
+		<li><tt>.tabGroup</tt>:<br />is the node reference to the parent node of the tabgroup. All tabgroup geometry is appended within this group.</li>
+		<li><tt>.tabwindows[tabindex]["content"]</tt>:<br />the content group where all content of a tabwindow should be stored. Data type is a node reference.</li>
+		<li><tt>.tabTitles</tt>:<br />is the array containing all tab titles. Data type is an array of Strings.</li>
+	</ul>
+        <h4>Version history</h4>
+        <ul>
+        	<li>1.0 (2006-03-11): initial version</li>
+        	<li>1.1 (2006-04-03): added ".moveTo(x,y)" and ".resize(width,height)" methods, added an additional g-element to hold transform values</li>
+        	<li>1.2 (2006-06-19): this.parentNode can now also be of type node reference (g or svg element); fixed a small bug when "hideContent" was set to true; changed this.parentGroup and introduced this.tabGroup, introduced id for group where content can be added, id name is: this.id+"__"+i+"_content"</li>
+			<li>1.2.1 (2006-07-07): fixed a bug for multiline tabs (dy attribute of the tab texts). This bug was apparent when having more than two lines of text in the tabs</li>
+       </ul>
+    </div>
+<br><br><hr>
+<table width="100%">
+<tr>
+<td align="left">Last modified: 
+
+Monday, 24-Jul-2006 16:19:03 CEST
+<br>&copy; <a href="http://www.carto.net/#en_w3">carto<span class="expage">:</span>net</a> (<a href="/andre.mw/">andr&eacute; m. winter</a> &amp <a href="http://www.carto.net/neumann/">andreas neumann</a>)
+
+<br>original URL for reference: http://www.carto.net/papers/svg/gui/tabgroup/index.shtml</td>
+<td align="right" valign="top"><a class="expage" href="javascript:location.href='http://del.icio.us/post?v=3&amp;url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title)"><img src="http://images.del.icio.us/static/img/delicious.med.gif" width="16" height="16" align="bottom" alt="del.icio.us"/>&nbsp;Add this page to del.icio.us</a></td>
+</tr></table>
+</body></html>
+

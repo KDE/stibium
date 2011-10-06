@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="imagetoolbar" content="no">
+  <link rel="icon" href="/srv/img/favicon.gif" type="image/gif">
+
+<!--additional header info goes here-->
+  <meta name="keywords" content="svg, combo box, combobox">
+  <meta name="description" content="combobox for svg applications">
+  <style type="text/css">
+body {background-image:url('http://www.carto.net/srv/img/backmap.gif'); background-repeat:no-repeat; background-color:#ffef95; font-family:Arial,Helvetica,Geneva,sans-serif;color:#B42D25; }
+
+/*B42D25 ~ rgb(180,44,37) bordeauxrot*/
+/*161682 ~ rgb(23,23,130) dklblau */
+/*168C16 ~ rgb(23,140,23) dklgruen */
+/*ffef95 ~ rgb(255,239,149) bg-gelb */
+
+a {text-decoration:underline; color:#168C16; background: transparent}
+
+h2 a {text-decoration:none;}
+
+.inpage { color:#168C16;}
+.expage { color:#161682;}
+
+a:visited {text-decoration:none;}
+
+
+/*
+a.inpage:visited {color:#6C6F12; background: transparent}
+a.expage:visited {color:#6C125D; background: transparent}
+*/
+
+@media screen {  /* hide from IE3 */
+a[href]:hover { background: #ffa }
+}
+
+
+
+
+.lde {background-image:url('http://www.carto.net/srv/img/back_l_de.gif'); }
+.lfr {background-image:url('http://www.carto.net/srv/img/back_l_fr.gif'); }
+.len {background-image:url('http://www.carto.net/srv/img/back_l_en.gif'); }
+.les {background-image:url('http://www.carto.net/srv/img/back_l_es.gif'); }
+
+.higher { font-weight:bold; } /*TO BE REMOVED*/
+.bigger { font-weight:bold; }
+.smaller { font-size:small;}
+
+.chrihelptd { background-color:#FFEF95; } /*tabellen hintergrund in christans hilfen sollet allgem hintergrund entsprechen*/
+
+.newspostit { background-color:#f6ffd8;}
+
+
+p,h1,h2,h3,h4,ul,ol,li,div,td,th,address,blockquote,b,i,.keepnormfontcolor { font-family:Arial,Helvetica,Geneva,sans-serif; color:#B42D25 }
+tt,pre { font-family:"Courier New",Courier,monospace; color:#B42D25; }
+
+
+.info { border:1px solid; background-color:#eeeeee; padding:40px; margin:0px; }
+.info tt, .info pre { font-family:"Courier New",Courier,monospace; color:blue; }
+
+  </style>
+  <title>carto:net - 
+
+ SVG Combobox
+</title>
+</head>
+<body><a name="top"></a>
+
+<table width="100%">
+	<tr>
+		<td align="left">
+			<img src="http://www.carto.net/srv/img/navig.gif" alt="" usemap="#navig" border="0" width="600" height="111">
+		</td>
+	</tr>
+</table>
+<!-- ONLY navig.gif IMG NEEDED NORMALLY -->
+<map name="navig">
+  <area shape="rect" coords="226,14,585,66" href="http://www.carto.net/" target="_top" alt="main page - page initiale - hauptseite - página principal">
+  <area shape="rect" coords="272,77,433,106" href="http://www.carto.net/projects/" alt="projects - projets - projekte - proyectos">
+  <area shape="rect" coords="454,77,598,106" href="http://www.carto.net/authors/" alt="authors - auteurs - autoren - autores">
+  <area shape="rect" coords="130,77,253,106" href="http://www.carto.net/papers/" alt="papers - exposés - berichte - papeles">
+  <area shape="rect" coords="25,77,109,106" href="http://www.carto.net/help/" alt="help - aide - hilfe - ayuda">
+</map>
+
+
+<div id="adBarContainer" style="margin-left:13px;float:right;right:8px;width:160px;height:600px;border:0px solid red;">
+<script type="text/javascript"><!--
+google_ad_client = "pub-6049981187637171";
+	/* 160x600, Carto.net Standard */
+	google_ad_slot = "4746507232";
+	google_ad_width = 160;
+	google_ad_height = 600;
+//-->
+</script>
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+</div>
+
+
+
+
+
+
+  <h2 class="sitemap"><a href="/">carto</a><span class="expage">:</span><a href="/papers/">papers</a><span class="expage">:</span><a href="/papers/svg/">svg</a><span class="expage">:</span><a href="/papers/svg/samples/">examples</a><span class="expage">:</span><a href="/papers/svg/samples/#iact">interactivity and svg gui</a><span class="expage">:</span>combobox</h2>
+
+<h2>SVG Combobox, Version 1.2.1, 2006-10-03, (see history at the end of the page)</h2>
+
+<p>This SVG combobox object should assist authors of SVG webapplications in creating user interfaces.</p>
+
+<p>Why should you create SVG only web applications? Advantages of SVG only applications are flexiblity (you can control every single aspect of a SVG GUI element) and scalability (in SVG your userinterface elements are scalable as well). If you need a pixel-precise, scalable application, HTML is not very well suited, since HTML form elements don't scale well. SVG also potentially allows more sophisticated GUI elements than HTML provides, such as slider, dial knobs, complex colourpickers, etc. Disadvantages include complexity (more complex than using HTML form elements) and a potentially bad user experience, if your SVG GUI elements behave different than native GUI elements of the operating system the user is used to. Some browsers still don't support SVG to HTML or HTML to SVG communication. In that case you are sort of locked into doing everything with SVG in order to reach the broadest audience. Another advantage of creating SVG only applications is, that your applications also work in SVG viewers outside the webbrowser (e.g. Batik, eSVG or SVG embedded applications).</p>
+
+<p>See an <a href="index.svg">example</a> of the SVG combobox object. The scripts had been tested in Adobe SVG viewer version 3, version 6, Mozilla SVG, Opera9 and Batik.</p>
+<p>The combobox is free to use. If you do any substantial improvements, please send back your improvements to the author. The GUI elements of carto.net are licensed under the terms of the LGPL license and you need to distribute the license with your code. Additionally, you should create a link to carto.net in your project's "about page" or impressum. If you plan to use the GUI elements in a commercial product, please check back with the author of the GUI elements to investigate arrangements. The original URL for the combobox is http://www.carto.net/papers/svg/gui/combobox/.</p>
+      <div class="info">
+        <h3>Documentation</h3>
+        <h4>Requirements</h4>
+<p>To use the combobox, your project needs to meet the following requirements:</p>
+<ul>
+	<li>the svg root element needs to have a viewBox attribute set (e.g. <tt>viewBox="0 0 1024 768"</tt>)</li>
+	<li>set the <tt>zoomAndPan="disable"</tt> attribute in the svg root element; this is a currently known limitation, that it does not work correctly after zooming and panning manually within the plugin</li>
+	<li>you need to link to the following scripts in your SVG header: <a href="../../resources/mapApp.js">mapApp.js</a>, <a href="../../resources/helper_functions.js">helper_functions.js</a>, <a href="../../resources/timer.js">timer.js</a> and <a href="combobox.js">combobox.js</a>; please note, that not all of the functions in these files are needed. The depencies to functions in external ecmascript files are listed below.</li>
+	<li>you need to include the global variable "myMapApp" of type "mapApp" into one of your js files, (<tt>var myMapApp = new mapApp();</tt>)</li>
+	<li>you need to create an empty svg group element with a unique id in an appropriate position of your document tree to hold the graphics of the combobox (e.g. <tt>&lt;g id="myCombobox" /&gt;</tt>)</li>
+	<li>it is recommended to place a background rectangle behind your SVG application to receive events on the root element level, e.g. stopping the mouse events if the user drags outside the combobox</li>
+	<li>you need to initialize the combobox as described below</li>
+</ul>
+       <h4>Features</h4>
+       <ul>
+       	<li>supports large lists</li>
+       	<li>supports keyboard input to quickly navigate in longer lists</li>
+       	<li>click in scrollbar jumps directly to position in the list, no need for a lot of scrolling</li>
+       	<li>Multiselections can be made using the shift and ctrl/apple key kombinations or by dragging with the pressed mouse button</li>
+       	<li>methods exist to delete and add elements or reorder the list of elements</li>
+       	<li>methods exist for "select all", "select none" and "inverse selection"</li>
+       </ul>
+       <h4>Dependencies on external functions</h4>
+        <ol><li><a href="combobox.js">combobox.js</a>:
+        	<ul><li>all of the objects and functions in this file are necessary</li></ul>
+        </li>
+        <li><a href="../../resources/mapApp.js">mapApp.js</a>:
+        	<ul><li>all of the objects and functions in this file are necessary</li></ul>
+        </li>
+        	<li><a href="../../resources/timer.js">timer.js</a>:
+        		<ul><li>all of the objects and functions in this file are necessary</li></ul>
+        	</li>
+        	<li><a href="../../resources/helper_functions.js">helper_functions.js</a>:
+        	<ul>
+        		<li>all the global variables at the top of the file are necessary</li>
+        	</ul>
+        </li>
+        </ol>
+        <h4>Constructor</h4>
+        <p>The following constructor function creates the combobox:</p>
+        <p><tt>var myCombobox = new combobox(id,parentNode,elementsArray,width,xOffset,yOffset,cellHeight,textPadding,heightNrElements,multiple,offsetValue,textStyles,boxStyles,scrollbarStyles,smallrectStyles,highlightStyles,triangleStyles,functionToCall);</tt><br/>
+	Example:</p>
+<tt><pre>//first a few styling parameters:
+var comboBoxCellHeight = 16;
+var comboBoxTextpadding = 3;
+var comboBoxtextStyles = {"font-family":"Arial,Helvetica","font-size":11,"fill":"dimgray"};
+var comboBoxStyles = {"stroke":"dimgray","stroke-width":1,"fill":"white"};
+var comboBoxScrollbarStyles = {"stroke":"dimgray","stroke-width":1,"fill":"whitesmoke"};
+var comboBoxSmallrectStyles = {"stroke":"dimgray","stroke-width":1,"fill":"lightgray"};
+var comboBoxHighlightStyles = {"fill":"dimgray","fill-opacity":0.3};
+var comboBoxTriangleStyles = {"fill":"dimgray"};
+//this array contains the values
+var roses = new Array({key:"Butterscotch",value:false},{key:"Ci Peace",value:false},{key:"Impatient",value:false},{key:"Lady Hillingdon",value:false},{key:"Lavaglut",value:false},{key:"Mission Bells",value:false},{key:"Sexy Rexy",value:false},{key:"Souvenir de Pierre Notting",value:false},{key:"Sunflare",value:false},{key:"Whisky Mac",value:false},{key:"Whisper Floribunda",value:false});
+//now the initialization of the combobox
+var comboRoses = new combobox("roses","roses",roses,170,50,300,comboBoxCellHeight,comboBoxTextpadding,5,true,50,comboBoxtextStyles,comboBoxStyles,comboBoxScrollbarStyles,comboBoxSmallrectStyles,comboBoxHighlightStyles,comboBoxTriangleStyles,showRoses);</pre></tt></p>
+		<p>The arguments are the following:</p>
+		<ul>
+			<li><tt>id (String)</tt>:<br />unique id that identifies the combobox</li>
+			<li><tt>parentNode (String or object)</tt>:<br />an existing group id or node reference (&lt;g/&gt; or &lt;svg/&gt; element) where the new combobox object will be appended. This group is preferably empty, but does not have to be. If the group id or node reference does not exist, the script creates a new empty parent group and appends it to the root element.</li>
+			<li><tt>elementsArray (Array of Literals)</tt>:<br />The array containing the element names and corresponding values (true|false); needs to be in the following format: <tt></tt>var flowers = new Array({key:"Acacia",value:false},{key:"Acanthus",value:false},{key:"Amaranth",value:false},{key:"Anthericum",value:false}</tt></li>
+			<li><tt>width (in viewBox coordinate system)</tt>:<br />overall width of the combobox</li>
+			<li><tt>xOffset (in viewBox coordinate system)</tt>:<br />left side of the combobox rectangle</li>
+			<li><tt>yOffset (in viewBox coordinate system)</tt>:<br />top of the combobox rectangle</li>
+			<li><tt>cellHeight (in viewBox coordinate system)</tt>:<br />the height of one cell in the combobox</li>
+			<li><tt>textPadding (in viewBox coordinate system)</tt>:<br />the offset of the text element in a combobox cell from the left side of the cell</li>
+			<li><tt>heightNrElements (number, integer)</tt>:<br />height of combobox in number of elements</li>
+			<li><tt>multiple (boolean, true|false)</tt>:<br />indicates if multiple values or only a single value can be selected</li>
+			<li><tt>offsetValue (number, integer)</tt>:<br />offset (element index) of the elementsArray. If not zero, the combobox will be initialized with this offset and the scrollbar adjusted accordingly</li>
+			<li><tt>textStyles (array of literals with presentation attributes)</tt>:<br />an array literal containing the presentation attributes of the combobox texts; could include CSS classes; should at least include a "font-size" attribute; example: <tt>var comboBoxtextStyles = {"font-family":"Arial,Helvetica","font-size":11,"fill":"dimgray"};</tt></li>
+			<li><tt>boxStyles (array of literals with presentation attributes)</tt>:<br />an array literal containing the presentation attributes of the combobox; could include CSS classes; should at least include a "fill", "stroke" and "stroke-width" attribute; example: <tt>var comboBoxStyles = {"stroke":"dimgray","stroke-width":1,"fill":"white"};</tt></li>
+			<li><tt>scrollbarStyles (array of literals with presentation attributes)</tt>:<br />an array literal containing the presentation attributes of the scrollbar; could include CSS classes; example: <tt>var comboBoxScrollbarStyles = {"stroke":"dimgray","stroke-width":1,"fill":"whitesmoke"};</tt></li>
+			<li><tt>smallrectStyles (array of literals with presentation attributes)</tt>:<br />an array literal containing the presentation attributes of the small rectangles (the ones containing the triangles); could include CSS classes; example: <tt>var comboBoxSmallrectStyles = {"stroke":"dimgray","stroke-width":1,"fill":"lightgray"};</tt></li>
+			<li><tt>highlightStyles (array of literals with presentation attributes)</tt>:<br />an array literal containing the presentation attributes of the highlight rectangles; could include CSS classes; example: <tt>var comboBoxHighlightStyles = {"fill":"dimgray","fill-opacity":0.3};</tt></li>
+			<li><tt>triangleStyles (array of literals with presentation attributes)</tt>:<br />an array literal containing the presentation attributes of the triangle (where the user clicks for unfolding or scrolling the list); could include CSS classes; example: <tt>var comboBoxTriangleStyles = {"fill":"dimgray"};</tt></li>
+			<li><tt>functionToCall (function or object or undefined)</tt>:<br />callBackFunction: you can pass a function, object or undefined. In the case of function and object the parameters returned are: the groupName of the combobox (string), an array of strings containing the selected values, an array of integers containing the selected index values. In case of an object, it calls the method .getComboboxVals(). In case of an undefined value, no callBack function is executed. The callBack function is executed with a slight delay (200ms). Naturally, you can adjust this value in the constructor function.</li>
+		</ul>
+        <h4>Methods</h4>
+        <ul>
+        	<li><tt>.getCurrentSelections()</tt>:<br />returns an array of strings containing the currently selected elements</li>	<li><tt>.getCurrentSelectionIndex()</tt>:<br />returns an array of integers containing the active selection indizes</li>
+		<li><tt>.elementExists(elementName)</tt>:<br />checks if an element exists; returns -1 if it does not exist, or the index where the element exists if the test is positive</li>
+		<li><tt>.selectElementsByName(elementNames,fireFunction)</tt>:<br />selects the given element if they exist; parameters are the element names and selection values (array of literals) and a boolean value whether we should execute the callBack function or not; example: <tt>var additionalElements = new Array({key:"Boswil",value:true},{key:"Brugg",value:true}); comboCommunitiesAargau.selectElementsByName(additionalElements,false);</tt></li>
+		<li><tt>.selectElementsByPosition(positionArray,fireFunction)</tt>:<br />selects the given elements by position if they exist; parameters are the element indizes and values (array of literals) and a boolean value whether we should execute the callBack function or not; example: <tt>var additionalElements = new Array({index:0,value:true},{index:2,value:true},{index:4,value:true}); comboCommunitiesAargau.selectElementsByPosition(additionalElements,false);</tt></li>
+		<li><tt>.selectAll(fireFunction)</tt>:<br />selects all elements in the combobox; parameter is a boolean value whether we should execute the callBack function or not; example:<tt>comboCommunitiesAargau.selectAll(false)</tt></li>
+		<li><tt>.deselectAll(fireFunction)</tt>:<br />deselects all elements in the combobox; parameter is a boolean value whether we should execute the callBack function or not; example:<tt>comboCommunitiesAargau.deselectAll(false)</tt></li>
+		<li><tt>.invertSelection(fireFunction)</tt>:<br />inverts the selection in the combobox; parameter is a boolean value whether we should execute the callBack function or not; example:<tt>comboCommunitiesAargau.invertSelection(false)</tt></li>
+		<li><tt>.sortList(direction)</tt>:<br />sorts the list alphabetically by direction; parameter is the direction ('asc' or 'desc')</li>
+		<li><tt>.deleteElementsByName(elementNames,fireFunction)</tt>:<br />deletes the elements with the given element names; parameters are the element names (array of strings) and a boolean value whether we should execute the callBack function or not; example: <tt>var deleteElements = new Array("Boswil","Brugg","Brunegg","Buttwil"); comboCommunitiesAargau.deleteElementsByName(deleteElements,false);</tt></li>
+		<li><tt>.deleteElementByPosition(elementPosition,fireFunction)</tt>:<br />deletes a single element with the given element index; parameters are the element index (integer) and a boolean value whether we should execute the callBack function or not; example: <tt>comboCommunitiesAargau.deleteElementByPosition(1,false);</tt></li>
+		<li><tt>.addElementAtPosition(element,position,fireFunction)</tt>:<br />adds an element at the given position; parameters are the element (literal), the position (integer) and a boolean value whether we should execute the callBack function or not; example: <tt>comboCommunitiesAargau.addElementAtPosition({key:"Zurich",value:true},0,false);</tt></li>
+		<li><tt>.addElementsAlphabetically(elementsArr,direction,fireFunction)</tt>:<br />adds the given elements and sorts the list alphabetically; parameters are the element array (array of literals), the direction for alphabetic ordering (string: "asc"|"desc") and a boolean value whether we should execute the callBack function or not; example: <tt>var addElementsArray = new Array({key:"Zurich",value:true},{key:"Rickenbach (ZH)",value:true},{key:"Innsbruck",value:false}); comboCommunitiesAargau.addElementsAlphabetically(addElementsArray,"desc",false);</tt></li>
+		<li><tt>.moveTo(x,y)</tt>:<br />moves the combobox to a new position, both parameters are of type number in viewBox coordinates</li>
+		<li><tt>.resize(width)</tt>:<br />resizes the combobox to a new width, parameter is of type number in viewBox coordinates</li>
+		<li><tt>.removeCombobox()</tt>:<br />removes all geometry elements of the combobox and leaves an empty group; sets the property <tt>.exists</tt> to false; note that the combox object is unusable in this state</li>
+        </ul>
+        <h4>Look and Feel</h4>
+		<p>You can adapt the look and feel (colors, fonts, sizes, etc.) in the <a href="combobox.js">combobox.js</a> script (top section in the constructor function). We simply assign XML attributes to various elements of the combobox.</p>
+        <h4>Current Limitation</h4>
+        <p>Currently, the combobox object may react strange if users zoom in with the plugin. This limitation might be eliminated in a later version. If multiselecting elements by mousedown and dragging, the list does not scroll if the user moves to the top or bottom of the combobox. This feature might be introduced in the future.</p>
+        <h4>Version history</h4>
+        <ul>
+        	<li>1.0 (2006-02-21): initial version</li>
+			<li>1.1 (2006-05-17): decoupled styling from the file combobox.js, fixes event handling so people can scroll outside scroller if mouse is down (events now added to root element)</li>
+			<li>1.2 (2006-10-02): changed internally <tt>groupId</tt> to <tt>id</tt> to make it consistent with other GUI elements, introduced <tt>parentId</tt> as a new constructor parameter for the same reason, introduced new methods <tt>.resize()</tt> and <tt>.moveTo()</tt></li>
+        	<li>1.2.1 (2006-10-03): corrected a slight bug regarding DOM hierarchy of created elements</li>
+		</ul>
+    </div>
+<br><br><hr>
+<table width="100%">
+<tr>
+<td align="left">Last modified: 
+
+Tuesday, 03-Oct-2006 18:02:34 CEST
+<br>&copy; <a href="http://www.carto.net/#en_w3">carto<span class="expage">:</span>net</a> (<a href="/andre.mw/">andr&eacute; m. winter</a> &amp <a href="http://www.carto.net/neumann/">andreas neumann</a>)
+
+<br>original URL for reference: http://www.carto.net/papers/svg/gui/combobox/index.shtml</td>
+<td align="right" valign="top"><a class="expage" href="javascript:location.href='http://del.icio.us/post?v=3&amp;url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title)"><img src="http://images.del.icio.us/static/img/delicious.med.gif" width="16" height="16" align="bottom" alt="del.icio.us"/>&nbsp;Add this page to del.icio.us</a></td>
+</tr></table>
+</body></html>
+

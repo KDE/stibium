@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/">
+        <file>webodf.css</file>
+        <file>webodf.js</file>
+        <file>embedodf.html</file>
+    </qresource>
+</RCC>

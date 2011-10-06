@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%"
+	height="100%" viewBox="0 0 1024 768" onload="init()">
+	<script type="text/ecmascript" xlink:href="checkbox_and_radiobutton.js"/>
+	<script type="text/ecmascript" xlink:href="../../resources/helper_functions.js"/>
+	<script type="text/ecmascript" xlink:href="../../resources/timer.js"/>
+	<script type="text/ecmascript">
+		<![CDATA[
+			var checkBoxes = new Array();
+			var radioGroupBandwidth;
+			
+			function init() {
+				//labeltext styles
+				var labeltextStyles = {"font-family":"Arial,Helvetica","fill":"dimgray","font-size":15};
+				//variables for label placement
+				var labelDistance = 12;
+				var labelYOffset = 5.5;
+				//four regular checkBoxes
+				checkBoxes["landcover"] = new checkBox("landcover","checkboxes",110,100,"checkBoxRect","checkBoxCross",true,"Landcover",labeltextStyles,labelDistance,labelYOffset,undefined,getLayerInfo);
+				checkBoxes["hydrology"] = new checkBox("hydrology","checkboxes",110,120,"checkBoxRect","checkBoxCross",true,"Hydrology",labeltextStyles,labelDistance,labelYOffset,undefined,getLayerInfo);
+				checkBoxes["roads"] = new checkBox("roads","checkboxes",110,140,"checkBoxRect","checkBoxCross",true,"Road Network",labeltextStyles,labelDistance,labelYOffset,undefined,getLayerInfo);
+				checkBoxes["names"] = new checkBox("names","checkboxes",110,160,"checkBoxRect","checkBoxCross",true,"Names",labeltextStyles,labelDistance,labelYOffset,undefined,getLayerInfo);
+				//a radio button group
+				var radioGroupQuality = new radioButtonGroup("radioGroupQuality",setQuality);
+				//the following two checkboxes are added to the radio button group stored in the object instance 'radioGroupQuality'
+				var cbHighQuality = new checkBox("highquality","radioButtonsQuality",410,100,"radioBorder","radioPoint",true,"High Quality",labeltextStyles,labelDistance,labelYOffset,radioGroupQuality,undefined);
+				var cbLowQuality = new checkBox("lowquality","radioButtonsQuality",410,120,"radioBorder","radioPoint",false,"Low Quality",labeltextStyles,labelDistance,labelYOffset,radioGroupQuality,undefined);				
+				//another radio button group
+				radioGroupBandwidth = new radioButtonGroup("radioGroupBandwidth",setBandwidth);
+				//the following three checkboxes are added to the radio button group stored in the object instance 'radioGroupBandwidth'
+				var cbHighQuality = new checkBox("highbandwidth","radioButtonsBandwidth",660,100,"radioBorder","radioPoint",true,"High Bandwidth",labeltextStyles,labelDistance,labelYOffset,radioGroupBandwidth,undefined);
+				var cbLowQuality = new checkBox("mediumbandwidth","radioButtonsBandwidth",660,120,"radioBorder","radioPoint",false,"Medium Bandwidth",labeltextStyles,labelDistance,labelYOffset,radioGroupBandwidth,undefined);				
+				var cbLowQuality = new checkBox("lowbandwidth","radioButtonsBandwidth",660,140,"radioBorder","radioPoint",false,"Low Bandwidth",labeltextStyles,labelDistance,labelYOffset,radioGroupBandwidth,undefined);				
+			}
+			
+			function setQuality(cbId,radioId,label) {
+				document.getElementById("qualitySetting").firstChild.nodeValue = "Your selection is: '"+label+"'";
+			}
+			
+			function setBandwidth(cbId,radioId,label) {
+				document.getElementById("bandwidthSetting").firstChild.nodeValue = "Your selection is: '"+label+"'";
+			}
+			
+			function getLayerInfo(id,status,label) {
+				var onOrOff = "off";
+				if (status) {
+					onOrOff = "on";
+				}
+				document.getElementById("layerFeedback").firstChild.nodeValue = "You just turned layer '"+label+"' "+onOrOff+"!";
+			}
+			function removeNamesCheckBox(evt) {
+				checkBoxes["names"].remove();
+				var parentNode = evt.target.parentNode;
+				parentNode.removeChild(evt.target);
+			}
+			function setBandwidthByLabel(labelTitle) {
+				radioGroupBandwidth.selectByLabelname(labelTitle,true);
+			}
+		]]>	
+	</script>
+	<defs>
+		<!-- symbols for check boxes -->
+		<symbol id="checkBoxRect" overflow="visible">
+			<rect x="-5" y="-5" width="10" height="10" fill="white" stroke="dimgray"
+				stroke-width="1" cursor="pointer"/>
+		</symbol>
+		<symbol id="checkBoxCross" overflow="visible">
+			<g pointer-events="none" stroke="dimgray" stroke-width="1">
+				<line x1="-3" y1="-3" x2="3" y2="3"/>
+				<line x1="3" y1="-3" x2="-3" y2="3"/>
+			</g>
+		</symbol>
+		<!-- symbols for radio buttons -->
+		<symbol id="radioBorder" overflow="visible">
+			<circle fill="white" stroke="dimgray" stroke-width="1.5" r="5"/>
+		</symbol>
+		<symbol id="radioPoint" overflow="visible">
+			<circle fill="dimgray" r="3" pointer-events="none"/>
+		</symbol>
+	</defs>
+	<title>Demonstration of the SVG Checkbox and Radio Button Objects</title>
+	<text font-family="Arial,Helvetica" font-size="25px" x="512" y="40" fill="dimgray"
+		text-anchor="middle">Demonstration of the SVG Checkbox and Radio Button Objects</text>
+	<text font-family="Arial,Helvetica" font-size="20px" x="100" y="80" fill="dimgray">Select Map
+		Layers</text>
+	<text font-family="Arial,Helvetica" font-size="20px" x="400" y="80" fill="dimgray">Select
+		Quality</text>
+	<text font-family="Arial,Helvetica" font-size="20px" x="650" y="80" fill="dimgray">Select
+		Bandwidth</text>
+	<text font-family="Arial,Helvetica" font-size="15px" x="400" y="190" fill="dimgray"
+		id="qualitySetting">Your selection is: 'High Quality'</text>
+	<text font-family="Arial,Helvetica" font-size="15px" x="650" y="190" fill="dimgray"
+		id="bandwidthSetting">Your selection is: 'High Bandwidth'</text>
+	<text font-family="Arial,Helvetica" font-size="15px" x="100" y="190" fill="dimgray"
+		id="layerFeedback"> </text>
+	<text font-family="Arial,Helvetica" font-size="15px" x="100" y="210" fill="dimgray"
+		onclick="removeNamesCheckBox(evt)">Click this text to remove the checkbox "Names"</text>
+	<text font-family="Arial,Helvetica" font-size="15px" x="100" y="230" fill="dimgray"
+		onclick="checkBoxes['hydrology'].setLabelText('Rivers and Lakes');evt.target.setAttributeNS(null,'display','none');">Click this text to change
+		labelText of the checkbox "Hydrology"</text>
+	<text font-family="Arial,Helvetica" font-size="15px" x="100" y="250" fill="dimgray"
+		onclick="checkBoxes['roads'].moveTo(220,100);evt.target.setAttributeNS(null,'display','none');">Click this text to reposition checkbox 'Road Network' to upper right</text>
+	<text font-family="Arial,Helvetica" font-size="15px" x="650" y="210" fill="dimgray"
+		onclick="setBandwidthByLabel('Medium Bandwidth')">Click this text to set value to medium
+		bandwidth</text>
+	<g id="checkboxes"/>
+	<g id="radioButtonsQuality"/>
+	<g id="radioButtonsBandwidth"/>
+</svg>

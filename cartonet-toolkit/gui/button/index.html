@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="imagetoolbar" content="no">
+  <link rel="icon" href="/srv/img/favicon.gif" type="image/gif">
+
+<!--additional header info goes here-->
+  <meta name="keywords" content="svg, button object">
+  <meta name="description" content="button object for svg applications">
+  <style type="text/css">
+body {background-image:url('http://www.carto.net/srv/img/backmap.gif'); background-repeat:no-repeat; background-color:#ffef95; font-family:Arial,Helvetica,Geneva,sans-serif;color:#B42D25; }
+
+/*B42D25 ~ rgb(180,44,37) bordeauxrot*/
+/*161682 ~ rgb(23,23,130) dklblau */
+/*168C16 ~ rgb(23,140,23) dklgruen */
+/*ffef95 ~ rgb(255,239,149) bg-gelb */
+
+a {text-decoration:underline; color:#168C16; background: transparent}
+
+h2 a {text-decoration:none;}
+
+.inpage { color:#168C16;}
+.expage { color:#161682;}
+
+a:visited {text-decoration:none;}
+
+
+/*
+a.inpage:visited {color:#6C6F12; background: transparent}
+a.expage:visited {color:#6C125D; background: transparent}
+*/
+
+@media screen {  /* hide from IE3 */
+a[href]:hover { background: #ffa }
+}
+
+
+
+
+.lde {background-image:url('http://www.carto.net/srv/img/back_l_de.gif'); }
+.lfr {background-image:url('http://www.carto.net/srv/img/back_l_fr.gif'); }
+.len {background-image:url('http://www.carto.net/srv/img/back_l_en.gif'); }
+.les {background-image:url('http://www.carto.net/srv/img/back_l_es.gif'); }
+
+.higher { font-weight:bold; } /*TO BE REMOVED*/
+.bigger { font-weight:bold; }
+.smaller { font-size:small;}
+
+.chrihelptd { background-color:#FFEF95; } /*tabellen hintergrund in christans hilfen sollet allgem hintergrund entsprechen*/
+
+.newspostit { background-color:#f6ffd8;}
+
+
+p,h1,h2,h3,h4,ul,ol,li,div,td,th,address,blockquote,b,i,.keepnormfontcolor { font-family:Arial,Helvetica,Geneva,sans-serif; color:#B42D25 }
+tt,pre { font-family:"Courier New",Courier,monospace; color:#B42D25; }
+
+
+.info { border:1px solid; background-color:#eeeeee; padding:40px; margin:0px; }
+.info tt, .info pre { font-family:"Courier New",Courier,monospace; color:blue; }
+
+  </style>
+  <title>carto:net - 
+
+ SVG Button Object
+</title>
+</head>
+<body><a name="top"></a>
+
+<table width="100%">
+	<tr>
+		<td align="left">
+			<img src="http://www.carto.net/srv/img/navig.gif" alt="" usemap="#navig" border="0" width="600" height="111">
+		</td>
+	</tr>
+</table>
+<!-- ONLY navig.gif IMG NEEDED NORMALLY -->
+<map name="navig">
+  <area shape="rect" coords="226,14,585,66" href="http://www.carto.net/" target="_top" alt="main page - page initiale - hauptseite - página principal">
+  <area shape="rect" coords="272,77,433,106" href="http://www.carto.net/projects/" alt="projects - projets - projekte - proyectos">
+  <area shape="rect" coords="454,77,598,106" href="http://www.carto.net/authors/" alt="authors - auteurs - autoren - autores">
+  <area shape="rect" coords="130,77,253,106" href="http://www.carto.net/papers/" alt="papers - exposés - berichte - papeles">
+  <area shape="rect" coords="25,77,109,106" href="http://www.carto.net/help/" alt="help - aide - hilfe - ayuda">
+</map>
+
+
+<div id="adBarContainer" style="margin-left:13px;float:right;right:8px;width:160px;height:600px;border:0px solid red;">
+<script type="text/javascript"><!--
+google_ad_client = "pub-6049981187637171";
+	/* 160x600, Carto.net Standard */
+	google_ad_slot = "4746507232";
+	google_ad_width = 160;
+	google_ad_height = 600;
+//-->
+</script>
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+</div>
+
+
+
+
+
+
+  <h2 class="sitemap"><a href="/">carto</a><span class="expage">:</span><a href="/papers/">papers</a><span class="expage">:</span><a href="/papers/svg/">svg</a><span class="expage">:</span><a href="/papers/svg/samples/">examples</a><span class="expage">:</span><a href="/papers/svg/samples/#iact">interactivity and svg gui</a><span class="expage">:</span>button object</h2>
+
+<h2>SVG Button Object, Version 1.1.3 (2006-10-30), see version history at the end of the page</h2>
+
+<p>This SVG button object should assist authors of SVG webapplications in creating user interfaces.</p>
+
+<p>Why should you create SVG only web applications? Advantages of SVG only applications are flexiblity (you can control every single aspect of a SVG GUI element) and scalability (in SVG your userinterface elements are scalable as well). If you need a pixel-precise, scalable application, HTML is not very well suited, since HTML form elements don't scale well. SVG also potentially allows more sophisticated GUI elements than HTML provides, such as slider, dial knobs, complex colourpickers, etc. Disadvantages include complexity (more complex than using HTML form elements) and a potentially bad user experience, if your SVG GUI elements behave different than native GUI elements of the operating system the user is used to. Some browsers still don't support SVG to HTML or HTML to SVG communication. In that case you are sort of locked into doing everything with SVG in order to reach the broadest audience. Another advantage of creating SVG only applications is, that your applications also work in SVG viewers outside the webbrowser (e.g. Batik, eSVG or SVG embedded applications).</p>
+
+<p>See an <a href="index.svg">example</a> of the SVG button object. The scripts had been tested in Adobe SVG viewer version 3, version 6, MozillaSVG, Batik and Opera9.</p>
+<p>The SVG button object is free to use. If you do any substantial improvements, please send back your improvements to the author. The GUI elements of carto.net are licensed under the terms of the LGPL license and you need to distribute the license with your code. Additionally, you should create a link to carto.net in your project's "about page" or impressum. If you plan to use the GUI elements in a commercial product, please check back with the author of the GUI elements to investigate arrangements. The original URL for the button object is http://www.carto.net/papers/svg/gui/button/.</p>
+      <div class="info">
+        <h3>Documentation</h3>
+        <h4>Requirements</h4>
+<p>To use the button object, your project needs to meet the following requirements:</p>
+<ul>
+	<li>it is recommended that the svg root element has a viewBox attribute set (e.g. <tt>viewBox="0 0 1024 768"</tt>)</li>
+	<li>you need to link to the following scripts in your SVG header to use the button or switchbutton: <a href="../../resources/helper_functions.js">helper_functions.js</a>, <a href="../../resources/timer.js">timer.js</a> and <a href="button.js">button.js</a>; please note, that not all of the functions in these files are needed. The depencies to functions in the file "helper_functions.js" are listed below.</li>
+	<li>you need to create an empty svg group element with a unique id in an appropriate position of your document tree to hold the graphics of the button object (e.g. <tt>&lt;g "textbutton1" /&gt;</tt>)</li>
+	<li>you need to initialize the button object as described below in the constructor section</li>
+</ul>
+       <h4>Features</h4>
+       <ul>
+       	<li>the button comes in two incarnations: a regular <tt>button</tt> and a <tt>switchbutton</tt>. The latter is a subclass of the <tt>button</tt> object and allows to switch/indicate state (pressed|unpressed)</li>
+       	<li>can be either a textbutton or imagebutton</li>
+       	<li>buttons states can be changed from other functions</li>
+       	<li>buttons can be hidden or shown</li>
+       	<li>buttons can be activated and deactivated (greyed out)</li>
+       	<li>for text buttons one can get or reset the button text value</li>
+       </ul>
+       <h4>Dependencies on external functions</h4>
+        <ol><li><a href="button.js">button.js</a>:
+        	<ul><li>all of the objects and functions in this file are necessary</li></ul>
+        </li>
+        </li>
+        	<li><a href="../../resources/timer.js">timer.js</a>:
+        		<ul><li>all of the objects and functions in this file are necessary</li></ul>
+        	</li>
+        	<li><a href="../../resources/helper_functions.js">helper_functions.js</a>:
+        	<ul>
+        		<li>all the global variables at the top of the file</li>
+         	</ul>
+        </li>
+        </ol>
+        <h4>Constructor</h4>
+        <p>The following constructor function creates the button or switchbutton:</p>
+        <p><tt>var myButton = new button(id,parentNode,functionToCall,buttonType,buttonText,buttonSymbolId,x,y,width,height,textStyles,buttonStyles,shadeLightStyles,shadeDarkStyles,shadowOffset);</tt> or <br />
+        <tt>var myButton = new switchbutton(id,parentNode,functionToCall,buttonType,buttonText,buttonSymbolId,x,y,width,height,textStyles,buttonStyles,shadeLightStyles,shadeDarkStyles,shadowOffset);</tt></p>
+	<p>Example:<br/>
+	<tt>
+//first a few styles<br />
+var buttonTextStyles = {"font-family":"Arial,Helvetica","fill":"navy","font-size":12};<br />
+var buttonStyles = {"fill":"lightsteelblue"};<br />
+var shadeLightStyles = {"fill":"white"};<br />
+var shadeDarkStyles = {"fill":"navy"};<br />
+//now create a new button instance<br/>
+var textbutton1 = new button("textbutton1","textbutton1",buttonPressed,"rect","Click me",undefined,100,100,100,30,buttonTextStyles,buttonStyles,shadeLightStyles,shadeDarkStyles,1);</tt><br/>or<br/>
+<tt>var buttonMoveVertex = new switchbutton("buttonMoveVertex","buttonMoveVertex",imageButtonPressed,"rect",undefined,"moveVertex",300,150,20,20,buttonTextStyles,buttonStyles,shadeLightStyles,shadeDarkStyles,1);</tt></p>
+		<p>The arguments are the following:</p>
+		<ol>
+			<li><tt>id (String)</tt>:<br />id of the button</li>
+			<li><tt>parentNode (String or node reference)</tt>:<br />group id or node reference to the parent group that will contain the button geometry</li>
+			<li><tt>functionToCall (function, object or undefined)</tt>:<br />callBack function that will be fired after button was pressed or toggled. The return parameters vary according to the button type: <ul><li>for a text button: groupId (string), evt (object), buttonText (string)</li><li>for an image button: groupId (string), evt (object)</li><li>for a text switchbutton: groupId (string), evt (object), buttonState (boolean), buttonText (string)</li><li>for an image switch button: groupId (string), evt (object), buttonState (boolean)</li></ul>In case of an object, the method <tt>.buttonPressed()</tt> of the given object is fired with the same parameters as listed above. The callBack function is executed with a slight delay (200ms) to allow the button to change its display state before executing the callback function. This value can be changed in the init() method of the button object.</li>
+			<li><tt>buttonType (string)</tt>:<br />valid values are "rect" or "ellipse"</li>
+			<li><tt>buttonText (string or undefined)</tt>:<br />the string of the buttonText to be displayed or the value <tt>undefined</tt> in case of an image button, if you want multiline buttons, use <tt>\n</tt> as a newline separator.</li>
+			<li><tt>buttonSymbolId (string)</tt>:<br />the id (string) of the button symbol or <tt>undefined</tt> for text buttons</li>
+			<li><tt>x (number)</tt>:<br />the left side of the button</li>
+			<li><tt>y (number)</tt>:<br />the top side of the button</li>
+			<li><tt>width (number)</tt>:<br />the button width/li>
+			<li><tt>height (number)</tt>:<br />the button height</li>
+			<li><tt>textStyles (Array of literals with presentation attributes)</tt>:<br />an array literal containing the presentation attributes of the button text; could include CSS classes; should at least include a "font-size" attribute; example: <tt>var buttonTextStyles = {"font-family":"Arial,Helvetica","fill":"navy","font-size":12};</tt></li>
+			<li><tt>buttonStyles (Array of literals with presentation attributes)</tt>:<br />an array literal containing the presentation attributes of the button rectangle or ellipse; could include CSS classes; should at least include a "fill" attribute; example: <tt>var buttonStyles = {"fill":"lightsteelblue"};</tt>, Note if you want rounded rectangles you can add the attributes <tt>"rx"</tt> and <tt>"rx"</tt> here.</li>
+			<li><tt>shadeLightStyles (Array of literals with presentation attributes)</tt>:<br />an array literal containing the presentation attributes of the button lighter shadow, simulating the button 3d effect behind the button rectangle or ellipse; could include CSS classes; should at least include a "fill" attribute; example: <tt>var shadeLightStyles = {"fill":"white"};</tt>, Note if you want rounded rectangles you can add the attributes <tt>"rx"</tt> and <tt>"rx"</tt> here.</li>
+			<li><tt>shadeDarkStyles (Array of literals with presentation attributes)</tt>:<br />an array literal containing the presentation attributes of the button darker shadow, simulating the button 3d effect behind the button rectangle or ellipse; could include CSS classes; should at least include a "fill" attribute; example: <tt>var shadeDarkStyles = {"fill":"navy"};</tt>, Note if you want rounded rectangles you can add the attributes <tt>"rx"</tt> and <tt>"rx"</tt> here.</li>
+			<li><tt>shadowOffset (number)</tt>:<br />a number describing the shadow offset behind the button, simulating the button 3d effect</li>
+		</ol>
+		<p>Note, if you want to change the y-offset value of the text in a textbutton you can do so in the method <tt>.createButton()</tt> - watch out for comment <tt>//create text element</tt>. Likewise you can change the <tt>dy</tt> offset for multiline textbuttons in the for loop creating the tspan elements.</p>
+        <h4>Methods</h4>
+        <ul>
+		<li><tt>.deactivate()</tt>:<br />deactivates (greys out) a button by placing an insensitive transparent rect or ellipse above the button</li>
+		<li><tt>.activate()</tt>:<br />activates a button if it was deactivated</li>
+		<li><tt>.hideButton()</tt>:<br />hides a button using the display="none" attribute</li>
+		<li><tt>.showButton()</tt>:<br />shows a button using the display="inherit" attribute</li>
+		<li><tt>.removeButton()</tt>:<br />removes button including all geometry. The existing button reference isn't usable anymore, after this method.</li>
+		<li><tt>.getTextValue()</tt>:<br />get the button text value, works only for text buttons</li>
+		<li><tt>.setTextValue(string)</tt>:<br />sets the button text value, works only for text buttons, parameter is a string</li>
+		<li><tt>.getSwitchValue()</tt>:<br />works only for switch buttons, returns a true or false parameter to see if button is pressed or not</li>
+		<li><tt>.setSwitchValue(onOrOff,fireFunction)</tt>:<br />works only for switch buttons, parameters are two boolean values (true|false) indicating if the button should be pressed or released. The second parameter controls whether the callBack function should be activated or not</li>
+		<li><tt>.moveTo(x,y)</tt>:<br />moves the button to a different position. The given parameters are of type number (in viewBox coordinates) and define the new x and y position of the upper left corner of the button</li>
+		<li><tt>.resize(width,height)</tt>:<br />moves the button to a different position. The given parameters are of type number (in viewBox coordinates) and define the new width and height of the button</li>
+         </ul>
+        <h4>Useful Properties</h4>
+        <ul>
+		<li><tt>.activated</tt>:<br />indicates whether a button is active or not (greyed out). Data type is a boolean (true|false)</li>
+	</ul>
+        <h4>Version history</h4>
+        <ul>
+        	<li>1.0 (2006-02-08): initial version</li>
+        	<li>1.0.1 (2006-03-13): changed parameters of constructor (styling system): now an array of literals containing presentation attributes. This allows for more flexibility in Styling. Added check for number of arguments.</li>
+			<li>1.0.2 (2006-07-07): added the option to create multiline textbuttons, changed the behaviour of the y placement of the text in the button</li>
+			<li>1.1 (2006-07-12): added <tt>.resize(width,height)</tt> and <tt>.moveTo(x,y)</tt> methods, added new constructor parameter parentNode, fixed a bug from version 1.0.2 in the method .setTextValue()</li>
+			<li>1.1.1 (2006-10-23): fixed an error with vertical positioning of button texts (thanks Bruce and Virgis); changed DOM hierarchy slightly. Every button now has its own group "this.parentGroup". This is necessary to hide and show a button. This group should not be shared by other SVG elements, unless on purpose; adopted .resize() and .moveTo() methods to make use of the corrected function this.createButtonTexts();</li>
+			<li>1.1.2 (2006-10-26): corrected a bug where type conversion in buttonText was missing when buttonText was of type number</li>
+      <li>1.1.3 (2006-10-30): corrected a bug where the <tt>.deactivate()</tt> method did not work properly when called after the method <tt>.setTextValue()</tt>; added support for <tt>rx</tt> and <tt>ry</tt> attribute in <tt>this.deActivateRect</tt></li>
+        </ul>
+		<h4>Credits</h4>
+		<ul>
+			<li>Bruce Rindahl and Virgis Globis for reporting errors on the vertical positioning of text within text buttons, and for sending bug fixes</li>
+			<li>Olaf Schnabel for suggesting a bugfix where type conversion was missing when button text was of type number</li>
+		</ul>
+    </div>
+<br><br><hr>
+<table width="100%">
+<tr>
+<td align="left">Last modified: 
+
+Monday, 30-Oct-2006 10:31:26 CET
+<br>&copy; <a href="http://www.carto.net/#en_w3">carto<span class="expage">:</span>net</a> (<a href="http://www.carto.net/neumann/">andreas neumann</a> &amp <a href="/andre.mw/">andr&eacute; m. winter</a>)
+
+<br>original URL for reference: http://www.carto.net/papers/svg/gui/button/index.shtml</td>
+<td align="right" valign="top"><a class="expage" href="javascript:location.href='http://del.icio.us/post?v=3&amp;url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title)"><img src="http://images.del.icio.us/static/img/delicious.med.gif" width="16" height="16" align="bottom" alt="del.icio.us"/>&nbsp;Add this page to del.icio.us</a></td>
+</tr></table>
+</body></html>
+

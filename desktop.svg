@@ -1,0 +1,420 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:xhtml="http://www.w3.org/1999/xhtml"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="1920"
+   height="1200"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.1 r9760"
+   sodipodi:docname="desktop.svg">
+     <title>Welcome to Stibium, KDE for cloud systems.</title>
+     <script type="text/ecmascript" xlink:href="cartonet-toolkit/resources/helper_functions.js"/>
+     <script type="text/ecmascript" xlink:href="cartonet-toolkit/resources/mapApp.js"/>
+     <script type="text/ecmascript" xlink:href="cartonet-toolkit/resources/timer.js"/>
+     <script type="text/ecmascript" xlink:href="cartonet-toolkit/gui/textbox/textbox.js"/>
+     <script type="text/ecmascript" xlink:href="cartonet-toolkit/gui/Window/Window.js"/>
+     
+  <script
+     type="text/javascript"
+     id="main">   
+     <![CDATA[
+     
+     var svgNS = "http://www.w3.org/2000/svg";
+     var xlinkNS = "http://www.w3.org/1999/xlink";
+     
+     //start a new window array in myMapApp    
+     var myMapApp = new mapApp(false,undefined);
+     myMapApp.Windows = new Array();
+     
+     desktopWidth = window.innerWidth;
+     desktopHeight = window.innerHeight;
+     
+     
+     //Textboxes settings:
+     var boxStyles = {"fill":"white","stroke":"#342826","stroke-width":1.5};
+     var cursorStyles = {"stroke":"red","stroke-width":1.5};
+     var selBoxStyles = {"fill":"blue","opacity":0.5};
+     
+     //windows settings:
+     var winPlaceholderStyles = {"fill":"none","stroke":"dimgray","stroke-width":1.5};
+     var windowStyles = {"fill":"aliceblue","stroke":"dimgray","stroke-width":1};
+     var titlebarStyles = {"fill":"gainsboro","stroke":"dimgray","stroke-width":1};
+     var statusbarStyles = {"fill":"aliceblue","stroke":"dimgray","stroke-width":1};
+     var titletextStyles = {"font-family":"Arial,Helvetica","font-size":14,"fill":"dimgray"};
+     var statustextStyles = {"font-family":"Arial,Helvetica","font-size":10,"fill":"dimgray"};
+     var buttonStyles = {"fill":"none","stroke":"dimgray","stroke-width":1};
+     var titlebarHeight = 17;
+     var statusbarHeight = 13;
+     
+     
+     //functions to manage windows
+     
+     function windowEvents(id,evtType) {
+       //nothing
+     }
+     function buttonTextChange(id,status) {
+       //nothing
+     }
+     
+     //this function is called every time the searchtextbox changes its value
+     function searchtextchanged(textboxId,value,changeType) {
+       //remember that changeType is "release" if the user finished typing, and it's "change" if the user is still typing.
+       //while value is the value of the box
+       if (changeType == "change") {
+	 //var tmptext = document.getElementById("tmptext");
+	 //tmptext.textContent = value;
+       }
+     }
+     
+     function drawwindow(app){
+       //open the window only if it is not already opened
+       try {
+	 myMapApp.Windows["bigWindow"].open(true);
+	 myMapApp.Windows["bigWindow"].maximize();
+       }
+       catch(error){
+	 myMapApp.Windows["bigWindow"] = new Window("bigWindow","Windows",700,500,50,50,true,5,5,desktopWidth-270,desktopHeight-65,true,winPlaceholderStyles,windowStyles,3,true,true,"Stibium File Manager","Take a look at your files on the cloud",true,true,true,titlebarStyles,titlebarHeight,statusbarStyles,statusbarHeight,titletextStyles,statustextStyles,buttonStyles,buttonTextChange);
+	 var window = document.getElementById("window");
+	 window.setAttributeNS(null,"style","opacity:1");
+	 myMapApp.Windows["bigWindow"].appendContent("window",true);
+	 var iframe1 = document.getElementById("iframe1");
+	 iframe1.setAttribute("src",app);
+       }
+     }
+     
+     // this is the main function
+     window.onload = function() {
+       
+       //first of all we declare the objects
+       var application =  document.getElementById("application");
+       var layer1 =  document.getElementById("layer1"); 
+       var layer2 =  document.getElementById("layer2");
+       var kdelogo = document.getElementById("kdelogo");
+       //var menu = document.getElementById("menu");
+       var wallpaper = document.getElementById("wallpaper");
+       var panel = document.getElementById("panel");
+       var kdesite = document.getElementById("kdesite");
+       var filemanager = document.getElementById("filemanager");
+       
+       //then we fit the image into the browser's window
+       scaling = desktopHeight/wallpaper.getAttribute("height");
+       if ((desktopWidth/wallpaper.getAttribute("width")) < (desktopHeight/wallpaper.getAttribute("height"))) scaling = desktopWidth/wallpaper.getAttribute("width");
+       scaling = scaling -0.02;
+       layer2.setAttribute("transform","scale("+scaling+")");
+       layer1.setAttribute("transform","scale("+scaling+")");
+       
+       
+       //the search field is there
+       var textStyle = {"font-family":"Ubuntu","font-size":36,"fill":"black"};
+       var textYOffset = 35;
+       searchtextbox = new textbox("searchtextbox","searchtextbox","Type here",300,(wallpaper.getAttribute("width")/2-250),100,350,50,textYOffset,textStyle,boxStyles,cursorStyles,selBoxStyles,undefined,searchtextchanged);
+       
+       pnlx = desktopWidth-695;
+       pnly = 65;
+       panel.setAttribute("transform","translate("+pnlx+","+pnly+")");
+       
+       //menu.setAttribute("style","opacity:0"); // at the beginning the menu should be hidden
+       
+       var date = document.getElementById("date").firstChild;
+       var time = document.getElementById("time").firstChild;
+       //date and time setting
+       var myInterval = window.setInterval(function() {
+	 var currentTime = new Date();
+	 var day = currentTime.getDate();
+	 var month = currentTime.getMonth()+1;
+	 var year = currentTime.getFullYear();
+	 var hours = currentTime.getHours();
+	 var minutes = currentTime.getMinutes();
+	 var seconds = currentTime.getSeconds();
+	 if (hours<10) hours= "0"+hours;
+					   if (minutes<10) minutes= "0"+minutes;
+					   if (seconds<10) seconds= "0"+seconds;
+					   time.textContent = hours+":"+minutes+":"+seconds;
+	 date.textContent = day+"/"+month+"/"+year;
+       },1000);
+       
+       
+       //this is the "wait loading" screen:
+       var loadkdelogo = document.getElementById("loadkdelogo");
+       loadkdelogo.setAttribute("x",(wallpaper.getAttribute("width")/2)-128);
+       loadkdelogo.setAttribute("y",(wallpaper.getAttribute("height")/2)-128);
+       
+       var text = document.createElementNS(svgNS,"text");
+       text.setAttributeNS(null,"x",(wallpaper.getAttribute("width")/2)-160);
+       text.setAttributeNS(null,"y",(wallpaper.getAttribute("height")/2)+160);
+       text.setAttributeNS(null,"font-family","Ubuntu");
+       text.setAttributeNS(null,"font-size",41);
+       text.setAttributeNS(null,"fill","black");
+       text.setAttributeNS(null,"pointer-events","none");       	
+       var textNode = document.createTextNode("Loading Stibium...");
+       text.appendChild(textNode);
+       layer2.appendChild(text);
+       
+       var n = 1;
+       var o = 0;
+       var myInterval = window.setInterval(function() {
+	 o = o+1;
+	 if (o>250) {
+	   layer1.setAttribute("style","opacity:1");
+	   n = n-0.05;
+	 }
+	 style ="opacity:"+n;
+	 layer2.setAttribute("style",style);
+	 if (n<0.1) {
+	   clearInterval(myInterval);
+	   application.removeChild(layer2);
+	 }
+       },1);
+       
+       kdelogo.onclick = function() {  
+	 
+	 
+	 var xlinkNS = "http://www.w3.org/1999/xlink";
+	 var menu = document.createElementNS(svgNS,"g");
+	 menu.setAttributeNS(null, "id","menu");
+	 document.getElementById("layer1").appendChild(menu);
+	 
+	 menu.setAttribute("style","opacity:0");
+	 var menurect = document.createElementNS(svgNS,"rect");
+	 menurect.setAttributeNS(null,"x",2);
+	 menuheight = wallpaper.getAttribute("height")/1.5;
+	 menurect.setAttributeNS(null,"y",(wallpaper.getAttribute("height")-menuheight-kdelogo.getAttribute("height")));
+	 menurect.setAttributeNS(null,"height",menuheight);
+	 menurect.setAttributeNS(null,"width",menuheight*0.70);
+	 menurect.setAttributeNS(null,"style","fill:white;fill-opacity:1;fill-rule:evenodd;stroke:#686c6f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;filter:url(#filter3829)");
+	 menurect.setAttributeNS(null,"fill","white");
+	 menu.appendChild(menurect);
+	 
+	 var kdesite = document.createElementNS(svgNS,"text");
+	 kdesite.setAttributeNS(null,"x",menurect.getAttribute("width")*1-200);
+	 kdesite.setAttributeNS(null,"y",menurect.getAttribute("y")*1 + 30);
+	 kdesite.setAttributeNS(null,"onclick", "window.open(\"http://www.kde.org\");");
+	 kdesite.setAttributeNS(null,"style","font-size:32px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Ubuntu;-inkscape-font-specification:Ubuntu");
+	 var textNode = document.createTextNode("www.kde.org");
+	 kdesite.appendChild(textNode);
+	 menu.appendChild(kdesite);
+	 
+	 //the menu should be created using a file "settings" in JSON format
+	 myapp = new Array();
+	 myapp.name = "File Manager";
+	 myapp.path = "drawwindow(\"fileview.svg?path=/~/\");";
+	 
+	 var newImage = document.createElementNS(svgNS,"image");
+	 newImage.setAttributeNS(null,"x",20); 
+	 newImage.setAttributeNS(null,"y",menurect.getAttribute("y")*1 + 30);
+	 newImage.setAttributeNS(null,"width",64); 
+	 newImage.setAttributeNS(null,"height",64); 
+	 newImage.setAttributeNS(xlinkNS,"href","icons/mimetype/unknown.png");
+	 menu.appendChild(newImage);
+	 
+	 var newText = document.createElementNS(svgNS,"text");
+	 newText.setAttributeNS(null,"x",90);
+	 newText.setAttributeNS(null,"y",menurect.getAttribute("y")*1 + 68);
+	 newText.setAttributeNS(null,"style","font-size:32px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Ubuntu;-inkscape-font-specification:Ubuntu");
+	 menu.appendChild(newText);
+	 
+	 if (myapp.name == "File Manager") {
+	   newImage.setAttributeNS(xlinkNS,"href","icons/mimetype/inode-directory.png");
+	   newText.setAttributeNS(null,"onclick", myapp.path);
+	   newImage.setAttributeNS(null,"onclick", myapp.path);
+	   var textNode = document.createTextNode(myapp.name);
+	   newText.appendChild(textNode);
+	 }
+	 
+	 //drawwindow("fileview.svg?path=/~/");
+	 
+	 //menu.setAttribute("style","opacity:1");
+	 
+	 var n = 0;
+	 var o = 0;
+	 var myInterval = window.setInterval(function() {
+	   n = n+0.05;
+	   style ="opacity:"+n;
+	   menu.setAttribute("style",style);
+	   if (n==0.9) {
+	     o = 1;
+	     clearInterval(myInterval);
+	   }
+	 },1);
+	 
+       }
+       
+       
+       
+       
+     }
+		
+	  ]]>
+	</script>
+  <defs
+     id="defs4">
+    <linearGradient
+       id="linearGradient3796">
+      <stop
+         style="stop-color:#028c91;stop-opacity:1;"
+         offset="0"
+         id="stop3798" />
+      <stop
+         style="stop-color:#ffffff;stop-opacity:0.27027026;"
+         offset="1"
+         id="stop3800" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3796"
+       id="linearGradient3802"
+       x1="-37.375645"
+       y1="1164.6446"
+       x2="165.66502"
+       y2="1164.6446"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.38367003,0,0,24.341044,1069.1576,-28739.583)" />
+    <filter
+       inkscape:collect="always"
+       id="filter3810">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="2.151625"
+         id="feGaussianBlur3812" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       id="filter3829">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="1.9697974"
+         id="feGaussianBlur3831" />
+    </filter>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.35"
+     inkscape:cx="430.11462"
+     inkscape:cy="600.13251"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:window-width="1280"
+     inkscape:window-height="741"
+     inkscape:window-x="-2"
+     inkscape:window-y="-3"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+    id="application">
+  <g
+     inkscape:label="Livello 1"
+     inkscape:groupmode="layer"
+     style="opacity:0"
+     id="layer1">
+    <image
+       sodipodi:absref="/var/www/zorbacloud/stibium/./wallpapers/air.jpg"
+       xlink:href="./wallpapers/air.jpg"
+       width="1920"
+       height="1200"
+       id="wallpaper"/>
+       <g
+	 id="panel">
+    <rect
+       style="fill:url(#linearGradient3802);fill-opacity:1;fill-rule:evenodd;stroke:none"
+       id="panelbackground"
+       width="77.900612"
+       height="1917.8773"
+       x="1054.8175"
+       y="-1349.8542"
+       transform="matrix(-0.014414,0.99989611,-0.99999966,-8.2398112e-4,0,0)" />
+    <image
+       sodipodi:absref="/var/www/zorbacloud/stibium/./icons/buttons/kdelogo.png"
+       xlink:href="./icons/buttons/kdelogo.png"
+       width="76.571426"
+       height="76.571426"
+       id="kdelogo"
+       x="-584.14282"
+       y="1059.505" />
+    <text
+       xml:space="preserve"
+       style="font-size:36px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial"
+       x="1140.8572"
+       y="1129.505"
+       id="date"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3814"
+         x="1140.8572"
+         y="1129.505">01/01/2011</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:36px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Ubuntu;-inkscape-font-specification:Ubuntu"
+       x="1117"
+       y="1098.6478"
+       id="time"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan2998"
+         x="1090"
+         y="1098.6478"
+         style="font-size:56px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Ubuntu;-inkscape-font-specification:Ubuntu">00:00:00</tspan></text>
+       </g>
+       <foreignObject
+       width="700"
+       height="500"
+       style="opacity:0"
+       id="window">
+       <xhtml:iframe id="iframe1" style="border: none" src="fileview.svg?path=/~/" width="700" height="500">
+       </xhtml:iframe>
+       </foreignObject> 
+
+    
+    <g id="searchtextbox" transform="translate(100,300)"/>
+	
+  </g>
+  <g
+  inkscape:groupmode="layer"
+    id="layer2">
+	<rect
+	style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#686c6f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;filter:url(#filter3829)"
+	id="loadingbgr"
+	width="1920"
+	height="1200"/>
+	  <image
+	  xlink:href="./icons/buttons/kdelogo.png"
+	  width="256"
+	  height="256"
+	  id="loadkdelogo"
+	  x="584.14282"
+	    y="559.505" />
+	    </g>
+	    
+  </g>
+
+</svg>

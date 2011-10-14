@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+xmlns:xhtml="http://www.w3.org/1999/xhtml"
+xmlns:dc="http://purl.org/dc/elements/1.1/"
+xmlns:cc="http://creativecommons.org/ns#"
+xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+xmlns:svg="http://www.w3.org/2000/svg"
+xmlns="http://www.w3.org/2000/svg"
+xmlns:xlink="http://www.w3.org/1999/xlink"
+xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+id="fileviewsvg"
+inkscape:version="0.48.1 r9760"
+version="1.1"
+   width="500"
+   height="700">
+  <defs
+     id="defs4" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <script
+  type="text/javascript"
+    id="main">   
+    <![CDATA[
+    // window dimension: 700x500
+    windowwidth = 500;
+    file = 0;
+    
+    var svgNS = "http://www.w3.org/2000/svg";
+    var xlinkNS = "http://www.w3.org/1999/xlink";
+    
+    function drawfile(filename, kind, dir){
+      var mylink = document.createElementNS(svgNS,"a");
+      mylink.setAttributeNS(null,"id","mylink"); 
+      mylink.setAttributeNS(xlinkNS,"href","fileview.svg?path="+dir+"/"+filename);
+      
+      var newRect = document.createElementNS(svgNS,"image");
+      newRect.setAttributeNS(null,"x",60); 
+      newRect.setAttributeNS(null,"y",(file*95) + 80);
+      newRect.setAttributeNS(null,"width",64); 
+      newRect.setAttributeNS(null,"height",64); 
+      newRect.setAttributeNS(xlinkNS,"href","icons/mimetype/unknown.png");
+      if (kind=="directory") newRect.setAttributeNS(xlinkNS,"href","icons/mimetype/inode-directory.png");
+      if (kind=="file") {
+	//it would be nice to understand what kind of file we have
+	//for example, if we have an odf file, we can see it opening a window with the path "webodf/odf.html#odf/try.odt" where "odf/try.odt" is the location of the odf file
+	//if we have a video we could open it into a videoplayer application that uses HTML5 <video> tag, and maybe convert it into ogg before opening, to ensure it will be loaded
+      }
+      mylink.appendChild(newRect);
+      
+      var newText = document.createElementNS(svgNS,"text");
+      newText.setAttributeNS(null,"x",30);
+      newText.setAttributeNS(null,"y",(file*95) + 155);
+      newText.setAttributeNS(null,"style","font-size:15px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Ubuntu;-inkscape-font-specification:Ubuntu");
+      var textNode = document.createTextNode(filename);
+      newText.appendChild(textNode);
+      mylink.appendChild(newText);
+      document.getElementById("layer1").appendChild(mylink);
+      document.getElementById("fileviewsvg").setAttribute("height",(file*95) + 200);
+      
+      file++;
+    }
+    
+    window.onload = function() {
+      var layer1 =  document.getElementById("layer1"); 
+      
+      reqpath = window.location.href.substring(window.location.href.indexOf("path=")+5).replace("%20"," ");
+      if (reqpath == "/~/") mypage = "getroot.php";
+      if (reqpath != "/~/") mypage = "folderlist.php?path="+reqpath;
+      
+      var xmlHttp = null;
+      xmlHttp = new XMLHttpRequest();
+      xmlHttp.open( "GET", mypage, false );
+      xmlHttp.send( null );
+      var resp = xmlHttp.responseText;
+      if (resp!=""){
+	var myObject = JSON.parse(resp);
+	
+	//this is the header of the window: it should have some info about the cloud account, the address textbox and maybe  a "go back" button
+	var nxmlHttp = null;
+	nxmlHttp = new XMLHttpRequest();
+	nxmlHttp.open( "GET", "getroot.php", false );
+	nxmlHttp.send( null );
+	var nresp = nxmlHttp.responseText;
+	var rootObject = JSON.parse(nresp);
+	
+	var newRect = document.createElementNS(svgNS,"rect");
+	newRect.setAttributeNS(null,"width",windowwidth-50); 
+	newRect.setAttributeNS(null,"height",50); 
+	newRect.setAttributeNS(null,"x",10); 
+	newRect.setAttributeNS(null,"y",10);
+	newRect.setAttributeNS(null,"fill","blue");
+	document.getElementById("layer1").appendChild(newRect);
+	
+	var newRectu = document.createElementNS(svgNS,"rect");
+	newRectu.setAttributeNS(null,"width",((windowwidth-50)/rootObject.max_bytes)*rootObject.used_bytes); 
+	newRectu.setAttributeNS(null,"height",50); 
+	newRectu.setAttributeNS(null,"x",10); 
+	newRectu.setAttributeNS(null,"y",10);
+	newRectu.setAttributeNS(null,"fill","red");
+	document.getElementById("layer1").appendChild(newRectu);
+	
+	var newText = document.createElementNS(svgNS,"text");
+	newText.setAttributeNS(null,"x",50);
+	newText.setAttributeNS(null,"y",40);
+	newText.setAttributeNS(null,"style","font-size:15px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Ubuntu;-inkscape-font-specification:Ubuntu");
+	var textNode = document.createTextNode("Hi "+rootObject.visible_name+", this is your space usage.");
+	newText.appendChild(textNode);
+	document.getElementById("layer1").appendChild(newText);
+	
+	//end of the header   
+	
+	if (mypage == "getroot.php") {
+	  drawfile(myObject.root_node_path.substring(reqpath.length), "directory", "/~");
+	  
+	  for (var key in myObject.user_node_paths) {
+	    var rxmlHttp = null;
+	    rxmlHttp = new XMLHttpRequest();
+	    rxmlHttp.open( "GET", "fileinfo.php?path="+myObject.user_node_paths[key], false );
+	    rxmlHttp.send( null );
+	    var rresp = rxmlHttp.responseText;
+	    var userObject = JSON.parse(rresp);
+	    drawfile(myObject.user_node_paths[key].substring(reqpath.length), userObject.kind, "/~");
+	  }
+	  
+	}
+	
+	if (mypage != "getroot.php") {
+	  
+	  for (var key in myObject.children) {
+	    drawfile(myObject.children[key].resource_path.substring(reqpath.length+1), myObject.children[key].kind, myObject.children[key].parent_path);
+	  }
+	}
+	
+      }
+    }
+      ]]>
+    </script>
+    
+  <g
+     id="layer1">
+  </g>
+</svg>

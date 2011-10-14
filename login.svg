@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:xhtml="http://www.w3.org/1999/xhtml"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="1920"
+   height="1200"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.1 r9760"
+   sodipodi:docname="desktop.svg">
+     <title>Welcome to Stibium, KDE for cloud systems.</title>
+     <script type="text/ecmascript" xlink:href="cartonet-toolkit/resources/helper_functions.js"/>
+     <script type="text/ecmascript" xlink:href="cartonet-toolkit/resources/mapApp.js"/>
+     <script type="text/ecmascript" xlink:href="cartonet-toolkit/resources/timer.js"/>
+     <script type="text/ecmascript" xlink:href="cartonet-toolkit/gui/textbox/textbox.js"/>
+     <script type="text/ecmascript" xlink:href="cartonet-toolkit/gui/Window/Window.js"/>
+  <script
+     type="text/javascript"
+     id="main">   
+     <![CDATA[
+     desktopWidth = window.innerWidth;
+     desktopHeight = window.innerHeight;
+     
+     var myMapApp = new mapApp(false,undefined);
+     myMapApp.Windows = new Array();
+     //first a few styles
+     var winPlaceholderStyles = {"fill":"none","stroke":"dimgray","stroke-width":1.5};
+     var windowStyles = {"fill":"aliceblue","stroke":"dimgray","stroke-width":1};
+     var titlebarStyles = {"fill":"gainsboro","stroke":"dimgray","stroke-width":1};
+     var statusbarStyles = {"fill":"aliceblue","stroke":"dimgray","stroke-width":1};
+     var titletextStyles = {"font-family":"Arial,Helvetica","font-size":14,"fill":"dimgray"};
+     var statustextStyles = {"font-family":"Arial,Helvetica","font-size":10,"fill":"dimgray"};
+     var buttonStyles = {"fill":"none","stroke":"dimgray","stroke-width":1};
+     var titlebarHeight = 17;
+     var statusbarHeight = 13;
+     
+     function windowEvents(id,evtType) {
+       //
+     }
+     function buttonTextChange(id,status) {
+       //
+     }
+     
+     // this is the main function
+     
+     window.onload = function() {
+       //first of all we declare the objects
+       var layer1 =  document.getElementById("layer1"); //this is the main layer
+       var kdelogo = document.getElementById("kdelogo");
+       var wallpaper = document.getElementById("wallpaper");
+       var htmlform1 = document.getElementById("htmlform1");
+       var loginrect = document.getElementById("loginrect");
+       var button = document.getElementById("button");
+       var abouthtml = document.getElementById("abouthtml");
+       
+       //then we fit the image into the browser's window
+       scaling = desktopHeight/wallpaper.getAttribute("height");
+       if ((desktopWidth/wallpaper.getAttribute("width")) < (desktopHeight/wallpaper.getAttribute("height"))) scaling = desktopWidth/wallpaper.getAttribute("width");
+       scaling = scaling -0.02;
+       layer1.setAttribute("transform","scale("+scaling+")");
+       
+       kdelogo.setAttribute("width","128");
+       kdelogo.setAttribute("height","128");
+       loginrect.setAttribute("width",(wallpaper.getAttribute("width")/2.5));
+       loginrect.setAttribute("height",(wallpaper.getAttribute("height")/2.5));
+       loginrect.setAttribute("x",(wallpaper.getAttribute("width")/2)-(loginrect.getAttribute("width")/2));
+       loginrect.setAttribute("y",(wallpaper.getAttribute("height")/2)-(loginrect.getAttribute("height")/2));
+       htmlform1.setAttribute("x",(wallpaper.getAttribute("width")/2)-(htmlform1.getAttribute("width")/2));
+       htmlform1.setAttribute("y",(wallpaper.getAttribute("height")/2)-(htmlform1.getAttribute("height")/2));
+       kdelogo.setAttribute("x",(wallpaper.getAttribute("width")-(128+5)));
+       kdelogo.setAttribute("y",(wallpaper.getAttribute("height")-kdelogo.getAttribute("height")));
+       
+       var n = 0;
+       var o = 1;
+       var myInterval = window.setInterval(function() {
+	 if (n>0.9) o = 0;
+	 if (n<0.1) o = 1;   
+	if (o==0) n = n-0.05;
+	if (o==1) n = n+0.05;
+	style ="opacity:"+n;
+	 kdelogo.setAttribute("style",style);
+       },150);
+       
+       
+       kdelogo.onclick = function() {  
+	 //open the window only if it is not already opened
+	 try {
+	   myMapApp.Windows["bigWindow"].open(true);
+	   myMapApp.Windows["bigWindow"].maximize();
+	 }
+	 catch(error){
+	   myMapApp.Windows["bigWindow"] = new Window("bigWindow","Windows",700,500,50,50,true,5,5,desktopWidth-270,desktopHeight-25,true,winPlaceholderStyles,windowStyles,3,true,true,"About Stibium","Some informations about Stibium",true,true,true,titlebarStyles,titlebarHeight,statusbarStyles,statusbarHeight,titletextStyles,statustextStyles,buttonStyles,buttonTextChange);
+	   abouthtml.setAttributeNS(null,"style","opacity:1");
+	   myMapApp.Windows["bigWindow"].appendContent("abouthtml",true);
+	 }
+	 
+       }
+       
+       
+     }
+		
+	  ]]>
+	</script>
+	<defs
+	  id="defs4">
+	  	<radialGradient
+		inkscape:collect="always"
+		xlink:href="#linearGradient5203"
+		id="radialGradient5209"
+		cx="373.79666"
+		cy="447.90894"
+		fx="373.79666"
+		fy="447.90894"
+		r="217.21428"
+		gradientTransform="matrix(3.4876151,0.02392397,-0.01321039,1.9258191,-923.94516,-423.62537)"
+		  gradientUnits="userSpaceOnUse" />
+		</defs>
+		
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.35"
+     inkscape:cx="430.11462"
+     inkscape:cy="600.13251"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:window-width="1280"
+     inkscape:window-height="741"
+     inkscape:window-x="-2"
+     inkscape:window-y="-3"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Livello 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <image
+       sodipodi:absref="/var/www/zorbacloud/stibium/./wallpapers/air.jpg"
+       xlink:href="./wallpapers/air.jpg"
+       width="1920"
+       height="1200"
+       id="wallpaper"/>
+    <image
+       sodipodi:absref="/var/www/zorbacloud/stibium/./icons/buttons/kdelogo.png"
+       xlink:href="./icons/buttons/kdelogo.png"
+       width="256"
+       height="256"
+       id="kdelogo"
+       x="-584.14282"
+       y="1059.505" />
+       <g
+	 id="loginwindow">
+	 <rect
+	 style="opacity:0.80212013999999998;fill:url(#radialGradient5209);fill-opacity:1;fill-rule:evenodd;stroke:#ffffff;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:0.32462686;stroke-dasharray:none;stroke-dashoffset:0"
+	 id="loginrect"
+	 width="500"
+	 height="350"
+	 ry="30.304577" />
+	 
+	 <foreignObject
+	 width="700"
+	 height="500"
+	 style="opacity:0"
+	 id="abouthtml">
+	 <xhtml:iframe id="iframe1" style="border: none" src="about.html" width="700" height="500">
+	 </xhtml:iframe>
+	 </foreignObject> 
+    <foreignObject
+    width="500"
+    height="420"
+       id="htmlform1">
+       
+       <xhtml:body>
+       <xhtml:p style="font-family:Ubuntu;font-size:200%;font-weight:bold;color:black">
+       <xhtml:center>
+       <xhtml:form name="logininfo" action="dologin.php" method="POST">
+       Username:
+       <xhtml:input
+       name="user"
+       style="font-family:Ubuntu;font-size:100%;font-weight:normal;color:black"
+       size="20"
+       type="text" />
+       <xhtml:br/>
+       <xhtml:br/>
+       Password:
+       <xhtml:input
+       name="pass"
+       style="font-family:Ubuntu;font-size:100%;font-weight:normal;color:black"
+       size="20"
+       type="password" />
+       <xhtml:br/>
+       <xhtml:br/>
+       Cloud service:
+       <xhtml:select name="service" style="font-family:Ubuntu;font-size:100%;font-weight:normal;color:black">
+       <xhtml:option value="ubuntuone">Ubuntu One</xhtml:option>
+       <xhtml:option value="dropbox">Dropbox</xhtml:option>
+       <xhtml:option value="owncloud">OwnCloud</xhtml:option>
+       <xhtml:option value="googledocs">Google Docs</xhtml:option>
+       </xhtml:select>
+       <xhtml:br/>
+       <xhtml:br/>
+       <xhtml:input style="font-family:Ubuntu;font-size:200%;font-weight:normal;color:black" name="button" type="submit" value="Login" />
+       </xhtml:form>
+       </xhtml:center>
+       </xhtml:p>
+       </xhtml:body>
+    </foreignObject>
+  </g>
+  </g>
+</svg>
